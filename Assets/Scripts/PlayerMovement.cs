@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     
     [SerializeField] private float dashLength = .5f, dashCooldown = 1f;
     private bool _isDashing;
+    private bool _hasDashed;
     private bool _isSprinting;
     
     private float _dashCounter;
@@ -20,26 +21,6 @@ public class PlayerMovement : MonoBehaviour
     
     private Vector2 _movementInput;
     
-    
-    /// <summary>
-    /// ////////////////ANIMATION STUFF////////////////////////
-    /// </summary>
-    
-    private string currentState;
-    
-    //states
-    const string PLAYER_WALK_UP = "Walk Up";
-    const string PLAYER_WALK_DOWN = "Walk Down";
-    const string PLAYER_WALK_LEFT = "Walk Left";
-    const string PLAYER_WALK_RIGHT = "Walk Right";
-    
-    const string PLAYER_SPRINT_FORWARDS = "PlayerSprintForwards";
-    const string PLAYER_RUN_BACKWARDS = "PlayerRunBackwards";
-    const string PLAYER_SPRINT_BACKWARDS = "PlayerSprintBackwards";
-    const string PLAYER_IDLE = "PlayerIdle";
-    const string PLAYER_JUMP = "PlayerJump";
-    const string PLAYER_RISE = "PlayerRising";
-    const string PLAYER_FALL = "PlayerFalling";
     
     
     /// <summary>
@@ -61,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         GetInputs();
         MovePlayer();
         DashTimers();
+        Animate();
         
         if (Input.GetButtonDown("Dash"))
         {
@@ -103,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
         if (_dashCooldownCounter <= 0 && _dashCounter <= 0)
         {
             //do the dash
+            _hasDashed = true;
             _isDashing = true;
             currentSpeed = dashSpeed;
             _dashCounter = dashLength;
@@ -137,17 +120,29 @@ public class PlayerMovement : MonoBehaviour
             _dashCooldownCounter -= Time.deltaTime;
         }
     }
-    
-    void ChangeAnimationState(string newState)
+
+    void Animate()
     {
-        //stop the same animation from interrupting itself
-        if(currentState == newState) return;
+        if (_movementInput != Vector2.zero)
+        {
+            
+            _animator.SetFloat("Horizontal", _movementInput.x);
+            _animator.SetFloat("Vertical", _movementInput.y);
+        }
+
+        if (!_isDashing)
+        {
+            _animator.SetFloat("Speed", _movementInput.sqrMagnitude); 
+        }
+
+        if (_hasDashed)
+        {
+            _animator.SetTrigger("Dash");
+            _hasDashed = false;
+        }
         
-        Debug.Log(newState);
-        //play the animation
-        _animator.Play(newState);
-        
-        //reassign the current state
-        currentState = newState;
+        _animator.SetBool("isSprinting", _isSprinting);
+
+            
     }
 }
