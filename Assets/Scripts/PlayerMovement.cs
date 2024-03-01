@@ -5,24 +5,48 @@ using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float currentSpeed = 5f;
+    /// <summary>
+    /// ////////////////MOVEMENT SERIALIZED////////////////////////
+    /// </summary>
     
+    [Header("Movement Speeds")]
+    [SerializeField] private float currentSpeed = 5f;
     [SerializeField] private float walkSpeed = 5f;
     [SerializeField] private float sprintSpeed = 8f;
-    [SerializeField] private float dashSpeed = 10f;
     
+    [Header("Dash Variables")]
+    [SerializeField] private float dashSpeed = 10f;
     [SerializeField] private float dashLength = .5f, dashCooldown = 1f;
+    
+    /// <summary>
+    /// ////////////////MOVEMENT PRIVATE////////////////////////
+    /// </summary>
+
+    //movement input
+    private Vector2 _movementInput;
+    
+    //dash timers
+    private float _dashCounter;
+    private float _dashCooldownCounter;
+    
+    /// <summary>
+    /// ////////////////SHOOTING////////////////////////
+    /// </summary>
+    
+    private Vector2 _direction = Vector2.down;
+    [Header("Shooting")]
+    [SerializeField] private GameObject bulletPrefab;
+
+
+
+    /// <summary>
+    /// ////////////////BOOL CHECKS////////////////////////
+    /// </summary>
     private bool _isDashing;
     private bool _hasDashed;
     private bool _isSprinting;
     
-    private float _dashCounter;
-    private float _dashCooldownCounter;
-    
-    private Vector2 _movementInput;
-    
-    
-    
+
     /// <summary>
     /// ////////////////COMPONENT REFERENCES////////////////////////
     /// </summary>
@@ -40,14 +64,20 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         GetInputs();
+        GetPlayerDirection();
         MovePlayer();
         DashTimers();
         Animate();
-        
         if (Input.GetButtonDown("Dash"))
         {
             Dash();
         }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
+        }
+
     }
 
 
@@ -81,16 +111,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Dash()
     {
-
-        if (_dashCooldownCounter <= 0 && _dashCounter <= 0)
-        {
-            //do the dash
-            _hasDashed = true;
-            _isDashing = true;
-            currentSpeed = dashSpeed;
-            _dashCounter = dashLength;
-        }
+        if (!(_dashCooldownCounter <= 0) || !(_dashCounter <= 0)) return;
         
+        //do the dash
+        _hasDashed = true;
+        _isDashing = true;
+        currentSpeed = dashSpeed;
+        _dashCounter = dashLength;
+
 
     }
 
@@ -120,12 +148,65 @@ public class PlayerMovement : MonoBehaviour
             _dashCooldownCounter -= Time.deltaTime;
         }
     }
+    void Shoot() 
+    {
+        if(!Input.GetButtonDown("Fire1")) return;
+        
+        
+        Vector2 _BulletSpawnPoint = (Vector2)transform.position + _direction;
+        
+        
+        Instantiate(bulletPrefab, _BulletSpawnPoint, Quaternion.identity);
+        _animator.SetTrigger("Shoot");
+    }
+
+    void GetPlayerDirection()
+    {
+        if(!IsPlayerMoving()) return;
+        if (IsCloserToOne(_movementInput.x, _movementInput.y))
+        {
+            //left or right
+            
+            switch (_movementInput.x)
+            {
+                case > 0:
+                    _direction = Vector2.right;
+                    break;
+                case < 0:
+                    _direction = Vector2.left;
+                    break;
+            }
+        }
+        else
+        {
+            //up or down
+            switch (_movementInput.y)
+            {
+                case > 0:
+                    _direction = Vector2.up;
+                    break;
+                case < 0:
+                    _direction = Vector2.down;
+                    break;
+            }
+        }
+    }
+    
+    bool IsCloserToOne(float Chosen, float Comparison)
+    {
+        return Mathf.Abs(Chosen) > Mathf.Abs(Comparison);
+    }
+
+
+    bool IsPlayerMoving()
+    {
+        return _movementInput != Vector2.zero;
+    }
 
     void Animate()
     {
-        if (_movementInput != Vector2.zero)
+        if (IsPlayerMoving())
         {
-            
             _animator.SetFloat("Horizontal", _movementInput.x);
             _animator.SetFloat("Vertical", _movementInput.y);
         }
