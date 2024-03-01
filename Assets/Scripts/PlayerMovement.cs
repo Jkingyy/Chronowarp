@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     //movement input
     private Vector2 _movementInput;
     
+    [SerializeField] private ParticleSystem dust;  
+    [SerializeField] private ParticleSystem loopingDust;  
     
     //dash timers
     private float _dashCounter;
@@ -87,19 +89,26 @@ public class PlayerMovement : MonoBehaviour
         _movementInput.x = Input.GetAxisRaw("Horizontal");
         _movementInput.y = Input.GetAxisRaw("Vertical");
 
-        if (!_isDashing)
-        {
-            if (Input.GetButtonDown("Sprint"))
+
+            if (Input.GetButtonDown("Sprint") && !_isDashing)
             {
                 _isSprinting = true;
-                currentSpeed = sprintSpeed;
+                if (!_isDashing)
+                {
+                    currentSpeed = sprintSpeed;
+                }
+                CreateParticle(loopingDust);
             }
             if (Input.GetButtonUp("Sprint"))
             {
                 _isSprinting = false;
-                currentSpeed = walkSpeed;
+                if (!_isDashing)
+                {
+                    currentSpeed = walkSpeed;
+                }
+                StopParticle(loopingDust);
             }
-        }
+
 
         
         _movementInput.Normalize();
@@ -119,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
         _isDashing = true;
         currentSpeed = dashSpeed;
         _dashCounter = dashLength;
-
+        CreateParticle(dust);
 
     }
 
@@ -227,5 +236,15 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetBool("isSprinting", _isSprinting);
 
             
+    }
+    
+    void CreateParticle(ParticleSystem Particle)
+    {
+        Particle.Play();
+    }
+
+    void StopParticle(ParticleSystem Particle)
+    {
+        Particle.Stop();
     }
 }
