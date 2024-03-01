@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6744152854296659704}
   - component: {fileID: 5876397589550319066}
   - component: {fileID: 4162522683476474965}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -168,6 +168,7 @@ MonoBehaviour:
   dashSpeed: 10
   dashLength: 0.5
   dashCooldown: 1
+  bulletPrefab: {fileID: 0}
 --- !u!95 &4162522683476474965
 Animator:
   serializedVersion: 5

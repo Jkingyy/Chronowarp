@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     //movement input
     private Vector2 _movementInput;
     
+    
     //dash timers
     private float _dashCounter;
     private float _dashCooldownCounter;
@@ -33,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     /// ////////////////SHOOTING////////////////////////
     /// </summary>
     
-    private Vector2 _direction = Vector2.down;
+    private Vector2 _direction = Vector2.up;
     [Header("Shooting")]
     [SerializeField] private GameObject bulletPrefab;
 
@@ -156,7 +157,8 @@ public class PlayerMovement : MonoBehaviour
         Vector2 _BulletSpawnPoint = (Vector2)transform.position + _direction;
         
         
-        Instantiate(bulletPrefab, _BulletSpawnPoint, Quaternion.identity);
+        PlayerBullet _PlayerBullet = Instantiate(bulletPrefab, _BulletSpawnPoint, Quaternion.identity).GetComponent<PlayerBullet>();
+        _PlayerBullet.SetStraightVelocity(_direction);
         _animator.SetTrigger("Shoot");
     }
 
