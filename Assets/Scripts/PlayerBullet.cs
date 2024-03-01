@@ -10,7 +10,10 @@ public class PlayerBullet : MonoBehaviour
     [SerializeField] private float shotSpeed; // The speed of the bullet
     public float bulletDamage;
     private Rigidbody2D _rb; // Reference to the Rigidbody2D component
+    private SpriteRenderer _spriteRenderer; // Reference to the SpriteRenderer component
+    private CircleCollider2D _circleCollider2D; // Reference to the CircleCollider2D component
     
+    [SerializeField] ParticleSystem explosion;
     
     #endregion
     
@@ -18,6 +21,8 @@ public class PlayerBullet : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
+        _circleCollider2D = GetComponent<CircleCollider2D>(); // Get the CircleCollider2D component
         // Get the Rigidbody2D component
         _rb = GetComponent<Rigidbody2D>();
         // Set the initial velocity of the bullet
@@ -44,8 +49,15 @@ public class PlayerBullet : MonoBehaviour
         // }
         
         // Destroy the bullet
-        Destroy(gameObject);
+        explosion.Play();
+        HideBullet();
+        Destroy(gameObject,0.6f);
     }
 
+    void HideBullet()
+    {
+        Destroy(_spriteRenderer);
+        Destroy(_circleCollider2D);
+    }
     #endregion
 }
