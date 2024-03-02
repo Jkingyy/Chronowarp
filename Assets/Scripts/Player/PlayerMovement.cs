@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
     private bool _hasDashed;
     private bool _isSprinting;
     
+    
+    private Recording _recording;
+    [SerializeField] private ListOfRecordings listOfRecordings;
 
     /// <summary>
     /// ////////////////COMPONENT REFERENCES////////////////////////
@@ -58,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _recording = ScriptableObject.CreateInstance<Recording>();
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
         currentSpeed = walkSpeed;
@@ -66,6 +71,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        FrameRecording _currentFrame = ScriptableObject.CreateInstance<FrameRecording>();
+        
         GetInputs();
         GetPlayerDirection();
         MovePlayer();
@@ -80,8 +87,46 @@ public class PlayerMovement : MonoBehaviour
         {
             Shoot();
         }
+        
+        AddToRecording(_currentFrame);
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            listOfRecordings.AddRecording(_recording);
+        }
     }
+
+    
+    void AddToRecording(FrameRecording CurrentFrame)
+    {
+        SetCurrentFrameInputs(CurrentFrame);
+        SetCurrentPosition(CurrentFrame);
+        
+        _recording.AddFrame(CurrentFrame);
+    }
+    
+    void SetCurrentPosition(FrameRecording CurrentFrame)
+    {
+        CurrentFrame.SetPosition(transform.position);
+    }
+    
+    void SetCurrentFrameInputs(FrameRecording CurrentFrame)
+    {
+        InputRecording dash = AddButton("Dash", _hasDashed);
+        InputRecording sprint = AddButton("sprint", _isSprinting);
+        
+        CurrentFrame.AddInput(dash);
+        CurrentFrame.AddInput(sprint);
+    }
+
+    InputRecording AddButton(string action, bool isDown)
+    {
+        InputRecording _input = ScriptableObject.CreateInstance<InputRecording>();
+        _input.button = action;
+        _input.buttonIsDown = isDown;
+        return _input;
+    }
+    
 
 
     void GetInputs()
@@ -92,6 +137,8 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetButtonDown("Sprint") && !_isDashing)
             {
+                
+
                 _isSprinting = true;
                 if (!_isDashing)
                 {
@@ -113,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
         
         _movementInput.Normalize();
     }
-
+    
     void MovePlayer()
     {
         _rb.velocity = _movementInput * currentSpeed;
