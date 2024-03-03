@@ -11,15 +11,22 @@ public class Playback : MonoBehaviour
     public List<Vector2> _playerPositions = new List<Vector2>();
     public List<Vector2> _movementInputs = new List<Vector2>();
 
+    [SerializeField, TextArea] private string DEBUG_String;
+    
+    Dictionary<string, bool> currentFrameInputs = new Dictionary<string, bool>();
     private Vector2 _currentMovementInput;
     private Vector2 _direction = Vector2.up;
-    private int _frameCounter = 0;
+    private int _frameCounter;
     
-    public Animator _animator;
+    private bool _isDashing;
+    private bool _hasDashed;
+    private bool _isSprinting;
+    
+    [SerializeField] Animator _animator;
 
     void Awake()
     {
-        
+        DontDestroyOnLoad(this.gameObject);
     }
     // Start is called before the first frame update
     void Start()
@@ -35,6 +42,11 @@ public class Playback : MonoBehaviour
             PlayFrame();
         }
 
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            _frameCounter = 0;
+        }
+
         
     }
 
@@ -42,9 +54,25 @@ public class Playback : MonoBehaviour
     {
         transform.position = _playerPositions[_frameCounter];
         _currentMovementInput = _movementInputs[_frameCounter];
+        GetCurrentFrameInputs();
+        
+        AssignCurrentFrameInputs();
         _frameCounter++;
         
         Animate();
+    }
+    
+    void GetCurrentFrameInputs()
+    {
+        currentFrameInputs = _frameRecording[_frameCounter];
+    }
+    
+    void AssignCurrentFrameInputs()
+    {
+        _isDashing = currentFrameInputs["IsDashing"];
+        _hasDashed = currentFrameInputs["HasDashed"];
+        _isSprinting = currentFrameInputs["Sprint"];
+        
     }
 
     public void SetPositionList(List<Vector2> PlayerPositions)
@@ -105,18 +133,18 @@ public class Playback : MonoBehaviour
             _animator.SetFloat("Vertical", _currentMovementInput.y);
         }
 
+        if (!_isDashing)
+        {
+            _animator.SetFloat("Speed", _currentMovementInput.sqrMagnitude); 
+        }
 
-        _animator.SetFloat("Speed", _currentMovementInput.sqrMagnitude); 
-       
-        //
-        // if (_hasDashed)
-        // {
-        //     _animator.SetTrigger("Dash");
-        //     _hasDashed = false;
-        // }
-        //
-        // _animator.SetBool("isSprinting", _isSprinting);
+        if (_hasDashed)
+        {
+            _animator.SetTrigger("Dash");
+            _hasDashed = false;
+        }
+        
+        _animator.SetBool("isSprinting", _isSprinting);
 
-            
     }
 }

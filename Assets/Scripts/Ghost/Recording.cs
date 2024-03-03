@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Recording : MonoBehaviour
 {
-    //list of inputs in the current frame
-    public Dictionary<string, bool> _frameInputs = new Dictionary<string, bool>();
+
     
     //list of inputs and movements for each frame
     public List<Dictionary<string,bool>> _frameRecording = new List<Dictionary<string, bool>>();
@@ -30,7 +29,7 @@ public class Recording : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartRecording();
     }
 
     // Update is called once per frame
@@ -44,26 +43,30 @@ public class Recording : MonoBehaviour
 
     void RecordFrame()
     {
+
         GetInputs();
         GetPosition();
     }
 
     void GetInputs()
     {
-        AddInputToDictionary("Dash", _playerMovement._hasDashed);
-        AddInputToDictionary("Sprint", _playerMovement._isSprinting);
-        AddFrameInputsToList();
+        Dictionary<string, bool> _frameInputs = new Dictionary<string, bool>();
+        AddInputToDictionary("HasDashed", _playerMovement._hasDashed, _frameInputs);
+        AddInputToDictionary("IsDashing", _playerMovement._isDashing, _frameInputs);
+        AddInputToDictionary("Sprint", _playerMovement._isSprinting, _frameInputs);
+        
+        AddFrameInputsToList(_frameInputs);
     }
 
-    void AddInputToDictionary(string action, bool isPressed)
+    void AddInputToDictionary(string action, bool isPressed, Dictionary<string,bool> Dictionary)
     {
-        _frameInputs.Add(action, isPressed);
+        Dictionary.Add(action, isPressed);
     }
     
-    void AddFrameInputsToList()
+    void AddFrameInputsToList( Dictionary<string,bool> Dictionary)
     {
-        _frameRecording.Add(_frameInputs);
-        _frameInputs.Clear();
+        _frameRecording.Add(Dictionary);
+        
     }
     
     
@@ -81,14 +84,20 @@ public class Recording : MonoBehaviour
     public void StopRecording()
     {
         _isRecording = false;
+        PlayRecording();
     }
     
     public void PlayRecording()
     {
         Playback _Playback = Instantiate(_ghostPrefab).GetComponent<Playback>();
         
-        _Playback._frameRecording = _frameRecording;
-        _Playback._playerPositions = _playerPositions;
-        _Playback._movementInputs = _movementInputs;
+        _Playback._frameRecording = new List<Dictionary<string, bool>>(_frameRecording);
+        _Playback._playerPositions = new List<Vector2>(_playerPositions); 
+        _Playback._movementInputs = new List<Vector2>(_movementInputs); 
+        
+        _frameRecording.Clear();
+        _playerPositions.Clear();
+        _movementInputs.Clear();
+        
     }
 }

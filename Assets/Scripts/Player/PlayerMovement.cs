@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
@@ -46,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// ////////////////BOOL CHECKS////////////////////////
     /// </summary>
-    private bool _isDashing;
+    public bool _isDashing;
     public bool _hasDashed;
     public bool _isSprinting;
     
@@ -80,11 +81,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            _recording.StartRecording();
-        }
-
         GetInputs();
         GetPlayerDirection();
         MovePlayer();
@@ -101,15 +97,16 @@ public class PlayerMovement : MonoBehaviour
         }
         
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             _recording.StopRecording();
+            
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentSceneName);
+
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            _recording.PlayRecording();
-        }
+
 
     }
 
