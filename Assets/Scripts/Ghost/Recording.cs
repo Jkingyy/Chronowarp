@@ -11,6 +11,7 @@ public class Recording : MonoBehaviour
     //list of inputs and movements for each frame
     public List<Dictionary<string,bool>> _frameRecording = new List<Dictionary<string, bool>>();
     public List<Vector2> _playerPositions = new List<Vector2>();
+    public List<Vector2> _movementInputs = new List<Vector2>();
     
     [SerializeField] GameObject _ghostPrefab;
     
@@ -69,6 +70,7 @@ public class Recording : MonoBehaviour
     void GetPosition()
     {
         _playerPositions.Add(transform.position);
+        _movementInputs.Add(_playerMovement._movementInput);
     }
     
     public void StartRecording()
@@ -87,5 +89,6 @@ public class Recording : MonoBehaviour
         
         _Playback._frameRecording = _frameRecording;
         _Playback._playerPositions = _playerPositions;
+        _Playback._movementInputs = _movementInputs;
     }
 }

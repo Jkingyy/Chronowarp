@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
 
     //movement input
-    private Vector2 _movementInput;
+    public  Vector2 _movementInput;
     
     [SerializeField] private ParticleSystem dust;  
     [SerializeField] private ParticleSystem loopingDust;  
