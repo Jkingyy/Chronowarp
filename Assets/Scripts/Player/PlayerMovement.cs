@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
@@ -24,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
 
     //movement input
-    private Vector2 _movementInput;
+    public  Vector2 _movementInput;
     
     [SerializeField] private ParticleSystem dust;  
     [SerializeField] private ParticleSystem loopingDust;  
@@ -46,33 +47,40 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// ////////////////BOOL CHECKS////////////////////////
     /// </summary>
-    private bool _isDashing;
-    private bool _hasDashed;
-    private bool _isSprinting;
+    public bool _isDashing;
+    public bool _hasDashed;
+    public bool _isSprinting;
     
     
-    private Recording _recording;
-    [SerializeField] private ListOfRecordings listOfRecordings;
 
     /// <summary>
     /// ////////////////COMPONENT REFERENCES////////////////////////
     /// </summary>
     private Rigidbody2D _rb;
     private Animator _animator;
+    private Recording _recording;
+    /// <summary>
+    /// ////////////////Scene REFERENCES////////////////////////
+    /// </summary>
+    
+    void Awake()
+    {
+        
+    }
     // Start is called before the first frame update
     void Start()
     {
-        _recording = ScriptableObject.CreateInstance<Recording>();
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
+        _recording = GetComponent<Recording>();
+        
         currentSpeed = walkSpeed;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        FrameRecording _currentFrame = ScriptableObject.CreateInstance<FrameRecording>();
-        
         GetInputs();
         GetPlayerDirection();
         MovePlayer();
@@ -88,46 +96,19 @@ public class PlayerMovement : MonoBehaviour
             Shoot();
         }
         
-        AddToRecording(_currentFrame);
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetButtonDown("Loop"))
         {
-            listOfRecordings.AddRecording(_recording);
+            _recording.StopRecording();
+            
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentSceneName);
+
         }
-    }
 
-    
-    void AddToRecording(FrameRecording CurrentFrame)
-    {
-        SetCurrentFrameInputs(CurrentFrame);
-        SetCurrentPosition(CurrentFrame);
-        
-        _recording.AddFrame(CurrentFrame);
-    }
-    
-    void SetCurrentPosition(FrameRecording CurrentFrame)
-    {
-        CurrentFrame.SetPosition(transform.position);
-    }
-    
-    void SetCurrentFrameInputs(FrameRecording CurrentFrame)
-    {
-        InputRecording dash = AddButton("Dash", _hasDashed);
-        InputRecording sprint = AddButton("sprint", _isSprinting);
-        
-        CurrentFrame.AddInput(dash);
-        CurrentFrame.AddInput(sprint);
-    }
 
-    InputRecording AddButton(string action, bool isDown)
-    {
-        InputRecording _input = ScriptableObject.CreateInstance<InputRecording>();
-        _input.button = action;
-        _input.buttonIsDown = isDown;
-        return _input;
-    }
-    
 
+    }
 
     void GetInputs()
     {
@@ -137,8 +118,6 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetButtonDown("Sprint") && !_isDashing)
             {
-                
-
                 _isSprinting = true;
                 if (!_isDashing)
                 {
