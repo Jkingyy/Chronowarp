@@ -81,6 +81,7 @@ public class Recording : MonoBehaviour
         _isRecording = true;
     }
     
+    
     public void StopRecording()
     {
         _isRecording = false;
@@ -90,14 +91,11 @@ public class Recording : MonoBehaviour
     public void PlayRecording()
     {
         Playback _Playback = Instantiate(_ghostPrefab).GetComponent<Playback>();
-        
+
+        _Playback.HideGhost();
         _Playback._frameRecording = new List<Dictionary<string, bool>>(_frameRecording);
         _Playback._playerPositions = new List<Vector2>(_playerPositions); 
-        _Playback._movementInputs = new List<Vector2>(_movementInputs); 
-        
-        _frameRecording.Clear();
-        _playerPositions.Clear();
-        _movementInputs.Clear();
-        
+        _Playback._movementInputs = new List<Vector2>(_movementInputs);
+
     }
 }

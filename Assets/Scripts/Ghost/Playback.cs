@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Playback : MonoBehaviour
 {
@@ -11,8 +13,6 @@ public class Playback : MonoBehaviour
     public List<Vector2> _playerPositions = new List<Vector2>();
     public List<Vector2> _movementInputs = new List<Vector2>();
 
-    [SerializeField, TextArea] private string DEBUG_String;
-    
     Dictionary<string, bool> currentFrameInputs = new Dictionary<string, bool>();
     private Vector2 _currentMovementInput;
     private Vector2 _direction = Vector2.up;
@@ -22,7 +22,12 @@ public class Playback : MonoBehaviour
     private bool _hasDashed;
     private bool _isSprinting;
     
-    [SerializeField] Animator _animator;
+    [SerializeField] Animator animator;
+    [SerializeField] SpriteRenderer sr;
+    [SerializeField] new CapsuleCollider2D collider;
+    
+    [SerializeField] private ParticleSystem dust;  
+    [SerializeField] private ParticleSystem loopingDust;  
 
     void Awake()
     {
@@ -40,14 +45,28 @@ public class Playback : MonoBehaviour
         if(_frameCounter < _frameRecording.Count)
         {
             PlayFrame();
+            if (_frameCounter == 1)
+            {
+                ShowGhost();
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetButtonDown("Loop"))
         {
             _frameCounter = 0;
         }
-
-        
+    }
+    
+    public void HideGhost()
+    {
+        sr.enabled = false;
+        collider.enabled = false;
+    }
+    
+    void ShowGhost()
+    {
+        sr.enabled = true;
+        collider.enabled = true;
     }
 
     void PlayFrame()
@@ -58,7 +77,8 @@ public class Playback : MonoBehaviour
         
         AssignCurrentFrameInputs();
         _frameCounter++;
-        
+
+        Particles();
         Animate();
     }
     
@@ -84,67 +104,81 @@ public class Playback : MonoBehaviour
     {
         _frameRecording = FrameRecording;
     }
-    void GetGhostDirection()
-    {
-        if(!IsGhostMoving()) return;
-        if (IsCloserToOne(_currentMovementInput.x, _currentMovementInput.y))
-        {
-            //left or right
-            
-            switch (_currentMovementInput.x)
-            {
-                case > 0:
-                    _direction = Vector2.right;
-                    break;
-                case < 0:
-                    _direction = Vector2.left;
-                    break;
-            }
-        }
-        else
-        {
-            //up or down
-            switch (_currentMovementInput.y)
-            {
-                case > 0:
-                    _direction = Vector2.up;
-                    break;
-                case < 0:
-                    _direction = Vector2.down;
-                    break;
-            }
-        }
-    }
-    bool IsCloserToOne(float Chosen, float Comparison)
-    {
-        return Mathf.Abs(Chosen) > Mathf.Abs(Comparison);
-    }
-
+    
 
     bool IsGhostMoving()
     {
         return _currentMovementInput != Vector2.zero;
     }
+
+    bool HasSprintBeenPressed()
+    {
+        if(_frameCounter < 2)
+        {
+            if (_isSprinting)
+            {
+                return true;
+            }
+            return false;
+        }
+        return currentFrameInputs["Sprint"] && !_frameRecording[_frameCounter - 2]["Sprint"];
+    }
+    
+    bool HasSprintBeenReleased()
+    {
+        if(_frameCounter < 2) return false;
+        
+        return !currentFrameInputs["Sprint"] && _frameRecording[_frameCounter - 2]["Sprint"];
+    }
+    
+    void Particles()
+    {
+        
+
+        if (HasSprintBeenPressed())
+        {
+            CreateParticle(loopingDust);
+        } else if(HasSprintBeenReleased())
+        {
+            StopParticle(loopingDust);
+        }
+        if (_hasDashed)
+        {
+            
+            CreateParticle(dust);
+        }
+    }
+
+    void CreateParticle(ParticleSystem Particle)
+    {
+        
+        Particle.Play();
+    }
+
+    void StopParticle(ParticleSystem Particle)
+    {
+        Particle.Stop();
+    }
     void Animate()
     {
         if (IsGhostMoving())
         {
-            _animator.SetFloat("Horizontal", _currentMovementInput.x);
-            _animator.SetFloat("Vertical", _currentMovementInput.y);
+            animator.SetFloat("Horizontal", _currentMovementInput.x);
+            animator.SetFloat("Vertical", _currentMovementInput.y);
         }
 
         if (!_isDashing)
         {
-            _animator.SetFloat("Speed", _currentMovementInput.sqrMagnitude); 
+            animator.SetFloat("Speed", _currentMovementInput.sqrMagnitude); 
         }
 
         if (_hasDashed)
         {
-            _animator.SetTrigger("Dash");
+            animator.SetTrigger("Dash");
             _hasDashed = false;
         }
         
-        _animator.SetBool("isSprinting", _isSprinting);
+        animator.SetBool("isSprinting", _isSprinting);
 
     }
 }

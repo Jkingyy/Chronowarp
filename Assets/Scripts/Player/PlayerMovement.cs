@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
 
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetButtonDown("Loop"))
         {
             _recording.StopRecording();
             

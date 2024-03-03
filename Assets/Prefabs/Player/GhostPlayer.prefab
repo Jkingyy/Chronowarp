@@ -1399,7 +1399,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 1, g: 1, b: 1, a: 0.39607844}
         key1: {r: 1, g: 1, b: 1, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -5107,7 +5107,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPositions: []
   _movementInputs: []
-  _animator: {fileID: 6896670698422976258}
+  animator: {fileID: 6896670698422976258}
+  sr: {fileID: 9128384952575152114}
+  collider: {fileID: 6971747821509114794}
+  dust: {fileID: 9118827722311660236}
+  loopingDust: {fileID: 6123100727105613648}
 --- !u!1 &7323805422000288976
 GameObject:
   m_ObjectHideFlags: 0
@@ -6416,7 +6420,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 1, g: 1, b: 1, a: 0.39607844}
         key1: {r: 1, g: 1, b: 1, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
