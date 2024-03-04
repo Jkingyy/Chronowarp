@@ -13,6 +13,7 @@ public class Recording : MonoBehaviour
     public List<Vector2> _movementInputs = new List<Vector2>();
     
     [SerializeField] GameObject _ghostPrefab;
+    [SerializeField] Transform ghostList;
     
     private bool _isRecording;
     
@@ -91,7 +92,7 @@ public class Recording : MonoBehaviour
     public void PlayRecording()
     {
         Playback _Playback = Instantiate(_ghostPrefab).GetComponent<Playback>();
-
+        _Playback.transform.SetParent(ghostList);
         _Playback.HideGhost();
         _Playback._frameRecording = new List<Dictionary<string, bool>>(_frameRecording);
         _Playback._playerPositions = new List<Vector2>(_playerPositions); 
