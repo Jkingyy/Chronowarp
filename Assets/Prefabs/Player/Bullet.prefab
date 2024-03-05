@@ -222,8 +222,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.39711642, g: 0.6968533, b: 0.8679245, a: 1}
-      maxColor: {r: 0.28627452, g: 0.7764706, b: 0.8784314, a: 1}
+      minColor: {r: 0.5374929, g: 0.6509434, b: 0.24870951, a: 1}
+      maxColor: {r: 0.6784314, g: 0.80784315, b: 0.34901962, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4993,7 +4993,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.28555536, g: 0.7778022, b: 0.8773585, a: 1}
+      key0: {r: 0.81997657, g: 0.9245283, b: 0.5538448, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -5146,7 +5146,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 718836849, guid: f70066b60cb7eac418d62bed97d91c40, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.550885, g: 0.754717, b: 0.03203986, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5302,8 +5302,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.6
-  m_Color: {r: 0, g: 0.08237791, b: 1, a: 1}
-  m_Intensity: 2.92
+  m_Color: {r: 0.6784314, g: 0.80784315, b: 0.34901962, a: 1}
+  m_Intensity: 1.09
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -5324,8 +5324,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0.42
-  m_PointLightOuterRadius: 2.86
+  m_PointLightInnerRadius: 0.25
+  m_PointLightOuterRadius: 3.22
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
