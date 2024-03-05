@@ -9,31 +9,31 @@ public class HealthHeart : MonoBehaviour
 {
     
     public Sprite fullHeart, emptyHeart;
-    Image heartImage;
+    Image _heartImage;
     
     const string HEART_DAMAGE = "Heart Damaged";
     const string HEART_IDLE = "Heart Idle";
     
     
-    private HeartStatus currentStatus;
+    private HeartStatus _currentStatus;
     private Animator _animator;
     void Awake()
     {
-        heartImage = GetComponent<Image>();
+        _heartImage = GetComponent<Image>();
         _animator = GetComponent<Animator>();
     }
     
 
     public void SetHeartImage(HeartStatus Status)
     {
-        currentStatus = Status;
+        _currentStatus = Status;
         if(Status == HeartStatus.Empty)
         {
-            heartImage.sprite = emptyHeart;
+            _heartImage.sprite = emptyHeart;
         }
         else
         {
-            heartImage.sprite = fullHeart;
+            _heartImage.sprite = fullHeart;
             _animator.Play(HEART_IDLE);
         }
     }
@@ -46,7 +46,7 @@ public class HealthHeart : MonoBehaviour
 
     public void TakeDamage()
     {
-        if(currentStatus == HeartStatus.Full)
+        if(_currentStatus == HeartStatus.Full)
         {
             _animator.Play(HEART_DAMAGE);
         }

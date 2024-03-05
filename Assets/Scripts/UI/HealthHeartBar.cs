@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,30 +9,30 @@ public class HealthHeartBar : MonoBehaviour
     
     public PlayerStats playerStats;
     
-    List<HealthHeart> heartList = new List<HealthHeart>();
+    List<HealthHeart> _heartList = new List<HealthHeart>();
 
 
-    public void ClearHearts()
+    void ClearHearts()
     {
         foreach (Transform t in transform)
         {
             Destroy(t.gameObject);
         }
-        heartList = new List<HealthHeart>();
+        _heartList = new List<HealthHeart>();
     }
 
-    public void CreateEmptyHeart()
+    void CreateEmptyHeart()
     {
-        GameObject newHeart = Instantiate(heartPrefab);
-        newHeart.transform.SetParent(transform);
+        GameObject _NewHeart = Instantiate(heartPrefab) ?? throw new ArgumentNullException("Instantiate(heartPrefab)");
+        _NewHeart.transform.SetParent(transform);
         
-        HealthHeart heart = newHeart.GetComponent<HealthHeart>();
-        heart.SetHeartImage(HeartStatus.Empty);
-        heartList.Add(heart);
+        HealthHeart _Heart = _NewHeart.GetComponent<HealthHeart>();
+        _Heart.SetHeartImage(HeartStatus.Empty);
+        _heartList.Add(_Heart);
 
     }
 
-    public void DrawHearts()
+    void DrawHearts()
     {
         ClearHearts();
         
@@ -42,7 +43,7 @@ public class HealthHeartBar : MonoBehaviour
         
         for(int i = 0; i < playerStats.currentHealth; i++)
         {
-            heartList[i].SetHeartImage(HeartStatus.Full);
+            _heartList[i].SetHeartImage(HeartStatus.Full);
         }
     }
     

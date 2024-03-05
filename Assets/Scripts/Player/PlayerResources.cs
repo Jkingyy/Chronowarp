@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEditor.iOS;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class PlayerResources : MonoBehaviour, IDamageable
 {
     
-    [SerializeField] PlayerStats _playerStats;
-    [SerializeField] Transform _ghostList;
+    [SerializeField] PlayerStats playerStats;
+    GameObject[] _ghostList;
     
     private Animator _animator;
     
@@ -19,7 +20,10 @@ public class PlayerResources : MonoBehaviour, IDamageable
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(playerStats.currentHealth <= 0)
+        {
+            DestroyAllGhosts();
+        }
     }
 
     // Update is called once per frame
@@ -30,18 +34,18 @@ public class PlayerResources : MonoBehaviour, IDamageable
             Damage(1);
         }
     }
-    public void Damage(int damageAmount)
+    public void Damage(int DamageAmount)
     {
-        _playerStats.currentHealth -= damageAmount;
+        playerStats.currentHealth -= DamageAmount;
         
-        if (_playerStats.currentHealth <= 0)
+        if (playerStats.currentHealth <= 0)
         {
             Die();
         }
     }
     
     
-    public void Die()
+    void Die()
     {
         DestroyAllGhosts();
         _animator.SetTrigger("Die");
@@ -50,9 +54,11 @@ public class PlayerResources : MonoBehaviour, IDamageable
 
     void DestroyAllGhosts()
     {
-        foreach (Transform t in _ghostList)
+        _ghostList = GameObject.FindGameObjectsWithTag("PlayerGhost");
+        
+        foreach (GameObject _GameObject in _ghostList)
         {
-            Destroy(t.gameObject);
+            Destroy(_GameObject);
         }
     }
 }

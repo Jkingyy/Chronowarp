@@ -9766,6 +9766,7 @@ GameObject:
   - component: {fileID: 5876397589550319066}
   - component: {fileID: 4162522683476474965}
   - component: {fileID: -2068783830479197571}
+  - component: {fileID: 6989257199926236545}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -9921,9 +9922,13 @@ MonoBehaviour:
   dashSpeed: 10
   dashLength: 0.5
   dashCooldown: 1
+  movementInput: {x: 0, y: 0}
   dust: {fileID: 1983507789198438154}
   loopingDust: {fileID: 7562861715608288221}
   bulletPrefab: {fileID: 5186704289563623660, guid: 395eb335996df224781413ba85435eab, type: 3}
+  isDashing: 0
+  hasDashed: 0
+  isSprinting: 0
 --- !u!95 &4162522683476474965
 Animator:
   serializedVersion: 5
@@ -9957,3 +9962,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ac4660a2c298744b2becf98b28483b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPositions: []
+  movementInputs: []
+  ghostPrefab: {fileID: 4135453205817036218, guid: 1caf06987286d2047b511a6606fa4f41, type: 3}
+--- !u!114 &6989257199926236545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7170078315195552131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a00eb71a049d9642be9fbb7e5a7970b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 6002fb3eafbfaed49aba2a356410483c, type: 2}
