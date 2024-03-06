@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerBullet
   - PlayerGhost
+  - PlayerFeet
   layers:
   - Default
   - TransparentFX
