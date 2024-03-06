@@ -1,102 +1,102 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Recording : MonoBehaviour
+namespace Ghost
 {
-
-    
-    //list of inputs and movements for each frame
-    public List<Dictionary<string,bool>> _frameRecording = new List<Dictionary<string, bool>>();
-    public List<Vector2> _playerPositions = new List<Vector2>();
-    public List<Vector2> _movementInputs = new List<Vector2>();
-    
-    [SerializeField] GameObject _ghostPrefab;
-    [SerializeField] Transform ghostList;
-    
-    private bool _isRecording;
-    
-    /// <summary>
-    /// ////////////////COMPONENT REFERENCES////////////////////////
-    /// </summary>
-    private PlayerMovement _playerMovement;
-
-    void Awake()
+    public class Recording : MonoBehaviour
     {
-        _playerMovement = GetComponent<PlayerMovement>();
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartRecording();
-    }
+    
+        //list of inputs and movements for each frame
+        public List<Dictionary<string,bool>> frameRecording = new List<Dictionary<string, bool>>();
+        public List<Vector2> playerPositions = new List<Vector2>();
+        public List<Vector2> movementInputs = new List<Vector2>();
+    
+        [SerializeField] GameObject ghostPrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (_isRecording)
+        private bool _isRecording;
+    
+        /// <summary>
+        /// ////////////////COMPONENT REFERENCES////////////////////////
+        /// </summary>
+        private PlayerMovement _playerMovement;
+
+        void Awake()
         {
-            RecordFrame();
+            _playerMovement = GetComponent<PlayerMovement>();
         }
-    }
 
-    void RecordFrame()
-    {
+        // Start is called before the first frame update
+        void Start()
+        {
+            StartRecording();
+        }
 
-        GetInputs();
-        GetPosition();
-    }
+        // Update is called once per frame
+        void Update()
+        {
+            if (_isRecording)
+            {
+                RecordFrame();
+            }
+        }
 
-    void GetInputs()
-    {
-        Dictionary<string, bool> _frameInputs = new Dictionary<string, bool>();
-        AddInputToDictionary("HasDashed", _playerMovement._hasDashed, _frameInputs);
-        AddInputToDictionary("IsDashing", _playerMovement._isDashing, _frameInputs);
-        AddInputToDictionary("Sprint", _playerMovement._isSprinting, _frameInputs);
+        void RecordFrame()
+        {
+
+            GetInputs();
+            GetPosition();
+        }
+
+        void GetInputs()
+        {
+            Dictionary<string, bool> _FrameInputs = new Dictionary<string, bool>();
+            AddInputToDictionary("HasDashed", _playerMovement.hasDashed, _FrameInputs);
+            AddInputToDictionary("IsDashing", _playerMovement.isDashing, _FrameInputs);
+            AddInputToDictionary("Sprint", _playerMovement.isSprinting, _FrameInputs);
         
-        AddFrameInputsToList(_frameInputs);
-    }
+            AddFrameInputsToList(_FrameInputs);
+        }
 
-    void AddInputToDictionary(string action, bool isPressed, Dictionary<string,bool> Dictionary)
-    {
-        Dictionary.Add(action, isPressed);
-    }
+        void AddInputToDictionary(string Action, bool IsPressed, Dictionary<string,bool> Dictionary)
+        {
+            Dictionary.Add(Action, IsPressed);
+        }
     
-    void AddFrameInputsToList( Dictionary<string,bool> Dictionary)
-    {
-        _frameRecording.Add(Dictionary);
+        void AddFrameInputsToList( Dictionary<string,bool> Dictionary)
+        {
+            frameRecording.Add(Dictionary);
         
-    }
+        }
     
     
-    void GetPosition()
-    {
-        _playerPositions.Add(transform.position);
-        _movementInputs.Add(_playerMovement._movementInput);
-    }
+        void GetPosition()
+        {
+            playerPositions.Add(transform.position);
+            movementInputs.Add(_playerMovement.movementInput);
+        }
     
-    public void StartRecording()
-    {
-        _isRecording = true;
-    }
+        void StartRecording()
+        {
+            _isRecording = true;
+        }
     
     
-    public void StopRecording()
-    {
-        _isRecording = false;
-        PlayRecording();
-    }
+        public void StopRecording()
+        {
+            _isRecording = false;
+            PlayRecording();
+        }
     
-    public void PlayRecording()
-    {
-        Playback _Playback = Instantiate(_ghostPrefab).GetComponent<Playback>();
-        _Playback.transform.SetParent(ghostList);
-        _Playback.HideGhost();
-        _Playback._frameRecording = new List<Dictionary<string, bool>>(_frameRecording);
-        _Playback._playerPositions = new List<Vector2>(_playerPositions); 
-        _Playback._movementInputs = new List<Vector2>(_movementInputs);
+        void PlayRecording()
+        {
+            Playback _Playback = Instantiate(ghostPrefab).GetComponent<Playback>();
+        
+            _Playback.HideGhost();
+            _Playback.frameRecording = new List<Dictionary<string, bool>>(frameRecording);
+            _Playback.playerPositions = new List<Vector2>(playerPositions); 
+            _Playback.movementInputs = new List<Vector2>(movementInputs);
 
+        }
     }
 }

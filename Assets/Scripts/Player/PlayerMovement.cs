@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Ghost;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -25,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
 
     //movement input
-    public  Vector2 _movementInput;
+    public  Vector2 movementInput;
     
     [SerializeField] private ParticleSystem dust;  
     [SerializeField] private ParticleSystem loopingDust;  
@@ -47,9 +48,9 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// ////////////////BOOL CHECKS////////////////////////
     /// </summary>
-    public bool _isDashing;
-    public bool _hasDashed;
-    public bool _isSprinting;
+    public bool isDashing;
+    public bool hasDashed;
+    public bool isSprinting;
     
     
 
@@ -101,8 +102,8 @@ public class PlayerMovement : MonoBehaviour
         {
             _recording.StopRecording();
             
-            string currentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(currentSceneName);
+            string _CurrentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(_CurrentSceneName);
 
         }
 
@@ -112,14 +113,14 @@ public class PlayerMovement : MonoBehaviour
 
     void GetInputs()
     {
-        _movementInput.x = Input.GetAxisRaw("Horizontal");
-        _movementInput.y = Input.GetAxisRaw("Vertical");
+        movementInput.x = Input.GetAxisRaw("Horizontal");
+        movementInput.y = Input.GetAxisRaw("Vertical");
 
 
-            if (Input.GetButtonDown("Sprint") && !_isDashing)
+            if (Input.GetButtonDown("Sprint") && !isDashing)
             {
-                _isSprinting = true;
-                if (!_isDashing)
+                isSprinting = true;
+                if (!isDashing)
                 {
                     currentSpeed = sprintSpeed;
                 }
@@ -127,8 +128,8 @@ public class PlayerMovement : MonoBehaviour
             }
             if (Input.GetButtonUp("Sprint"))
             {
-                _isSprinting = false;
-                if (!_isDashing)
+                isSprinting = false;
+                if (!isDashing)
                 {
                     currentSpeed = walkSpeed;
                 }
@@ -137,12 +138,12 @@ public class PlayerMovement : MonoBehaviour
 
 
         
-        _movementInput.Normalize();
+        movementInput.Normalize();
     }
     
     void MovePlayer()
     {
-        _rb.velocity = _movementInput * currentSpeed;
+        _rb.velocity = movementInput * currentSpeed;
     }
 
     void Dash()
@@ -150,8 +151,8 @@ public class PlayerMovement : MonoBehaviour
         if (!(_dashCooldownCounter <= 0) || !(_dashCounter <= 0)) return;
         
         //do the dash
-        _hasDashed = true;
-        _isDashing = true;
+        hasDashed = true;
+        isDashing = true;
         currentSpeed = dashSpeed;
         _dashCounter = dashLength;
         CreateParticle(dust);
@@ -170,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
             if (_dashCounter <= 0)
             {
                 //dash has ended
-                _isDashing = false;
+                isDashing = false;
                 currentSpeed = walkSpeed;
                 _dashCooldownCounter = dashCooldown;
             }
@@ -184,6 +185,7 @@ public class PlayerMovement : MonoBehaviour
             _dashCooldownCounter -= Time.deltaTime;
         }
     }
+    // ReSharper disable Unity.PerformanceAnalysis
     void Shoot() 
     {
         if(!Input.GetButtonDown("Fire1")) return;
@@ -200,11 +202,11 @@ public class PlayerMovement : MonoBehaviour
     void GetPlayerDirection()
     {
         if(!IsPlayerMoving()) return;
-        if (IsCloserToOne(_movementInput.x, _movementInput.y))
+        if (IsCloserToOne(movementInput.x, movementInput.y))
         {
             //left or right
             
-            switch (_movementInput.x)
+            switch (movementInput.x)
             {
                 case > 0:
                     _direction = Vector2.right;
@@ -217,7 +219,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             //up or down
-            switch (_movementInput.y)
+            switch (movementInput.y)
             {
                 case > 0:
                     _direction = Vector2.up;
@@ -237,39 +239,39 @@ public class PlayerMovement : MonoBehaviour
 
     bool IsPlayerMoving()
     {
-        return _movementInput != Vector2.zero;
+        return movementInput != Vector2.zero;
     }
 
     void Animate()
     {
         if (IsPlayerMoving())
         {
-            _animator.SetFloat("Horizontal", _movementInput.x);
-            _animator.SetFloat("Vertical", _movementInput.y);
+            _animator.SetFloat("Horizontal", movementInput.x);
+            _animator.SetFloat("Vertical", movementInput.y);
         }
 
-        if (!_isDashing)
+        if (!isDashing)
         {
-            _animator.SetFloat("Speed", _movementInput.sqrMagnitude); 
+            _animator.SetFloat("Speed", movementInput.sqrMagnitude); 
         }
 
-        if (_hasDashed)
+        if (hasDashed)
         {
             _animator.SetTrigger("Dash");
-            _hasDashed = false;
+            hasDashed = false;
         }
         
-        _animator.SetBool("isSprinting", _isSprinting);
+        _animator.SetBool("isSprinting", isSprinting);
 
             
     }
-    
-    void CreateParticle(ParticleSystem Particle)
+
+    static void CreateParticle(ParticleSystem Particle)
     {
         Particle.Play();
     }
 
-    void StopParticle(ParticleSystem Particle)
+    static void StopParticle(ParticleSystem Particle)
     {
         Particle.Stop();
     }
