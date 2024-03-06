@@ -15,6 +15,8 @@ namespace Ghost
         [SerializeField] GameObject ghostPrefab;
 
         private bool _isRecording;
+        
+
     
         /// <summary>
         /// ////////////////COMPONENT REFERENCES////////////////////////

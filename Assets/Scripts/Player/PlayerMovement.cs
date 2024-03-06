@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isDashing;
     public bool hasDashed;
     public bool isSprinting;
-    
+    bool canMove = true;
     
 
     /// <summary>
@@ -82,29 +82,32 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetInputs();
-        GetPlayerDirection();
-        MovePlayer();
-        DashTimers();
-        Animate();
-        if (Input.GetButtonDown("Dash"))
+        if(canMove)
         {
-            Dash();
-        }
+            GetInputs();
+            GetPlayerDirection();
+            MovePlayer();
+            DashTimers();
+            Animate();
+            if (Input.GetButtonDown("Dash"))
+            {
+                Dash();
+            }
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Shoot();
-        }
-        
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Shoot();
+            }
 
-        if (Input.GetButtonDown("Loop"))
-        {
-            _recording.StopRecording();
-            
-            string _CurrentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(_CurrentSceneName);
 
+            if (Input.GetButtonDown("Loop"))
+            {
+                _recording.StopRecording();
+
+                string _CurrentSceneName = SceneManager.GetActiveScene().name;
+                SceneManager.LoadScene(_CurrentSceneName);
+
+            }
         }
 
 
@@ -264,6 +267,35 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetBool("isSprinting", isSprinting);
 
             
+    }
+
+    private Door _door;
+    public void PlayDoorEnterAnimation(Door door)
+    {
+        Debug.Log("test");
+        _door = door;
+        DisablePlayerMovement();
+        
+        _animator.SetTrigger("EnterDoor");
+    }
+    
+    void PlayDoorExitAnimation()
+    {
+        if(_door == null) return;
+        
+        
+        _door.ChangeAnimationState("PlayerEnter");
+    }
+
+    void DisablePlayerMovement()
+    {
+        canMove = false;
+        _rb.velocity = Vector2.zero;
+    }
+
+    void EnablePlayerMovement()
+    {
+        canMove = true;
     }
 
     static void CreateParticle(ParticleSystem Particle)
