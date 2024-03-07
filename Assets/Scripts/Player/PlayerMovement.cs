@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float walkSpeed = 5f;
     [SerializeField] private float sprintSpeed = 8f;
     
+    [SerializeField] private float cutsceneSpeed = 2f;
+    
     [Header("Dash Variables")]
     [SerializeField] private float dashSpeed = 10f;
     [SerializeField] private float dashLength = .5f, dashCooldown = 1f;
@@ -274,7 +276,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("test");
         _door = door;
-        DisablePlayerMovement();
+       
         
         _animator.SetTrigger("EnterDoor");
     }
@@ -282,11 +284,15 @@ public class PlayerMovement : MonoBehaviour
     void PlayDoorExitAnimation()
     {
         if(_door == null) return;
-        
-        
+        DisablePlayerMovement();
+        StopAllParticles();
         _door.ChangeAnimationState("PlayerEnter");
     }
 
+    void MoveInCutscene()
+    {
+        _rb.velocity = Vector2.up * cutsceneSpeed;
+    }
     void DisablePlayerMovement()
     {
         canMove = false;
@@ -306,5 +312,11 @@ public class PlayerMovement : MonoBehaviour
     static void StopParticle(ParticleSystem Particle)
     {
         Particle.Stop();
+    }
+    
+    void StopAllParticles()
+    {
+        StopParticle(dust);
+        StopParticle(loopingDust);
     }
 }

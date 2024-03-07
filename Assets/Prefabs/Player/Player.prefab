@@ -10025,6 +10025,7 @@ MonoBehaviour:
   currentSpeed: 5
   walkSpeed: 5
   sprintSpeed: 8
+  cutsceneSpeed: 0.2
   dashSpeed: 10
   dashLength: 0.5
   dashCooldown: 1
