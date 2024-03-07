@@ -37,7 +37,7 @@ public class Button : MonoBehaviour
     
     void Interact(bool hasInteracted)
     {
-        foreach (GameObject interactableObject in _objectsToActivate)
+       foreach (GameObject interactableObject in _objectsToActivate)
         {
             IInteractable interactable = interactableObject.GetComponent<IInteractable>();
             

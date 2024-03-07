@@ -17,6 +17,8 @@ public class Door : MonoBehaviour, IInteractable
     string currentState;
     
     Collider2D _collider;
+    
+    PlayerMovement Player;
     void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -54,18 +56,26 @@ public class Door : MonoBehaviour, IInteractable
         _collider.isTrigger = false;
     }
 
+    void LevelFinished()
+    {
+        Player.OnLevelFinish.Invoke();
+    }
+    void DisableAnimator()
+    {
+        _animator.enabled = false;
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         
         if (other.CompareTag("PlayerFeet"))
         {
-            Debug.Log("Player Entered Door");
-            PlayerMovement player = other.GetComponentInParent<PlayerMovement>();
 
-            if (player != null)
+            Player = other.GetComponentInParent<PlayerMovement>();
+
+            if (Player != null)
             {
-                Debug.Log(player);
-                player.PlayDoorEnterAnimation(this); 
+
+                Player.PlayDoorEnterAnimation(this); 
             }
         }
     }

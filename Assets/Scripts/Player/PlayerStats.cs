@@ -8,7 +8,15 @@ public class PlayerStats : ScriptableObject
     public int maxHealth;
     public int currentHealth;
     
-
+    public bool newLevel;
+    
+    public int currentLevel;
+    
+    
+    public void SetNewLevel(bool value)
+    {
+        newLevel = value;
+    }
 }
 
 

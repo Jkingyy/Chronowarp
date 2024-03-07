@@ -26,7 +26,12 @@ namespace Ghost
     
         [SerializeField] private ParticleSystem dust;  
         [SerializeField] private ParticleSystem loopingDust;  
-
+        
+        const string GHOST_TIME_LOOP = "Ghost Time Loop";
+        
+        public PlayerMovement playerMovement;
+        
+        public bool isLive = false;
         void Awake()
         {
             DontDestroyOnLoad(this.gameObject);
@@ -34,40 +39,44 @@ namespace Ghost
         // Start is called before the first frame update
         void Start()
         {
-        
+            playerMovement.OnLoop.AddListener(HideGhost);
         }
 
         // Update is called once per frame
         void Update()
         {
-            if(_frameCounter < frameRecording.Count)
+            if (isLive && _frameCounter < playerPositions.Count)
             {
                 PlayFrame();
-                if (_frameCounter == 1)
-                {
-                    ShowGhost();
-                }
+                
             }
-
+            
+            
             if (Input.GetButtonDown("Loop"))
             {
-                _frameCounter = 0;
+                HideGhost();
             }
         }
-    
+        
+        public void ResetFrameCounter()
+        {
+            _frameCounter = 0;
+        }
+        
         public void HideGhost()
         {
             sr.enabled = false;
             collider.enabled = false;
         }
-    
-        void ShowGhost()
+
+        
+        public void ShowGhost()
         {
             sr.enabled = true;
             collider.enabled = true;
         }
 
-        void PlayFrame()
+        public void PlayFrame()
         {
             transform.position = playerPositions[_frameCounter];
             _currentMovementInput = movementInputs[_frameCounter];
