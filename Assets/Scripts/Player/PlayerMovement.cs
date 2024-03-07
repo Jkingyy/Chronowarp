@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
     /// ////////////////Events////////////////////////
     /// </summary>
     public UnityEvent OnLoop;
+    public UnityEvent OnLevelFinish;
 
     /// <summary>
     /// ////////////////BOOL CHECKS////////////////////////
@@ -83,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
         _recording = GetComponent<Recording>();
+        
         
         DisablePlayerMovement();
         _animator.Play(PLAYER_LOAD);
@@ -285,7 +287,6 @@ public class PlayerMovement : MonoBehaviour
     private Door _door;
     public void PlayDoorEnterAnimation(Door door)
     {
-        Debug.Log("test");
         _door = door;
        
         

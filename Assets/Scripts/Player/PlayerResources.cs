@@ -12,14 +12,22 @@ public class PlayerResources : MonoBehaviour, IDamageable
     GameObject[] _ghostList;
     
     private Animator _animator;
+    private SceneTransition _sceneTransition;
     
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _sceneTransition = GameObject.FindGameObjectWithTag("SceneTransition").GetComponent<SceneTransition>();
     }
     // Start is called before the first frame update
     void Start()
     {
+        if (playerStats.newLevel)
+        {
+            playerStats.currentHealth = playerStats.maxHealth;
+            playerStats.newLevel = false;
+            _sceneTransition.FadeToClear();
+        }
         if(playerStats.currentHealth <= 0)
         {
             DestroyAllGhosts();
@@ -48,7 +56,7 @@ public class PlayerResources : MonoBehaviour, IDamageable
     }
 
 
-    void DestroyAllGhosts()
+    public void DestroyAllGhosts()
     {
         _ghostList = GameObject.FindGameObjectsWithTag("PlayerGhost");
         
