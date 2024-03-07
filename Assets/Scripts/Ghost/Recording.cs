@@ -87,10 +87,10 @@ namespace Ghost
         public void StopRecording()
         {
             _isRecording = false;
-            PlayRecording();
+            SpawnPlayerGhost();
         }
     
-        void PlayRecording()
+        void SpawnPlayerGhost()
         {
             Playback _Playback = Instantiate(ghostPrefab).GetComponent<Playback>();
         
@@ -98,7 +98,20 @@ namespace Ghost
             _Playback.frameRecording = new List<Dictionary<string, bool>>(frameRecording);
             _Playback.playerPositions = new List<Vector2>(playerPositions); 
             _Playback.movementInputs = new List<Vector2>(movementInputs);
+            _Playback.playerMovement = _playerMovement;
+        }
 
+        void PlayRecording()
+        {
+            GameObject[] _GhostList = GameObject.FindGameObjectsWithTag("PlayerGhost"); 
+
+            foreach (var ghost in _GhostList)
+            {
+                Playback _Playback = ghost.GetComponent<Playback>();
+                _Playback.isLive = true;
+                _Playback.ShowGhost();
+                _Playback.ResetFrameCounter();
+            }
         }
     }
 }

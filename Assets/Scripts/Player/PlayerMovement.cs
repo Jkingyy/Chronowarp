@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Ghost;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
@@ -46,6 +48,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
 
 
+    /// <summary>
+    /// ////////////////Events////////////////////////
+    /// </summary>
+    public UnityEvent OnLoop;
 
     /// <summary>
     /// ////////////////BOOL CHECKS////////////////////////
@@ -55,7 +61,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isSprinting;
     bool canMove = true;
     
-
+    const string PLAYER_LOAD = "LoadAfterLoop";
+    
     /// <summary>
     /// ////////////////COMPONENT REFERENCES////////////////////////
     /// </summary>
@@ -77,6 +84,8 @@ public class PlayerMovement : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _recording = GetComponent<Recording>();
         
+        DisablePlayerMovement();
+        _animator.Play(PLAYER_LOAD);
         currentSpeed = walkSpeed;
         
     }
@@ -104,11 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetButtonDown("Loop"))
             {
-                _recording.StopRecording();
-
-                string _CurrentSceneName = SceneManager.GetActiveScene().name;
-                SceneManager.LoadScene(_CurrentSceneName);
-
+                OnLoop.Invoke();
             }
         }
 
@@ -271,6 +276,12 @@ public class PlayerMovement : MonoBehaviour
             
     }
 
+    void ReloadScene()
+    {
+        string _CurrentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(_CurrentSceneName);
+    }
+
     private Door _door;
     public void PlayDoorEnterAnimation(Door door)
     {
@@ -293,7 +304,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb.velocity = Vector2.up * cutsceneSpeed;
     }
-    void DisablePlayerMovement()
+    public void DisablePlayerMovement()
     {
         canMove = false;
         _rb.velocity = Vector2.zero;

@@ -29,10 +29,6 @@ public class PlayerResources : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Loop"))
-        {
-            Damage(1);
-        }
     }
     public void Damage(int DamageAmount)
     {

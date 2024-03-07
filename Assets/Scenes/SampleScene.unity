@@ -56691,51 +56691,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2045298012944640108, guid: 3ce331a48faac364cadad34bc2c1f0e4, type: 3}
   m_PrefabInstance: {fileID: 12718231919627496}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &514269873
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514269872}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.71342564}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 1}
-    oldSize: {x: 1.5603809, y: 1.47}
-    newSize: {x: 1.5603809, y: 1.47}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.5603809, y: 1.4268513}
-  m_EdgeRadius: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -59212,10 +59167,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
-    - target: {fileID: 2045298012944640108, guid: 3ce331a48faac364cadad34bc2c1f0e4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4097599554872182826, guid: 3ce331a48faac364cadad34bc2c1f0e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.14
@@ -59259,10 +59210,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2045298012944640108, guid: 3ce331a48faac364cadad34bc2c1f0e4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 514269873}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ce331a48faac364cadad34bc2c1f0e4, type: 3}
 --- !u!1001 &2858373843936173692
 PrefabInstance:
@@ -59317,21 +59265,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8546450017438975119, guid: 8794a4704ea494d4298411c28c5a8f53, type: 3}
-      propertyPath: _objectsToActivate.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8546450017438975119, guid: 8794a4704ea494d4298411c28c5a8f53, type: 3}
       propertyPath: _objectsToActivate.Array.data[0]
       value: 
       objectReference: {fileID: 514269872}
-    - target: {fileID: 8546450017438975119, guid: 8794a4704ea494d4298411c28c5a8f53, type: 3}
-      propertyPath: _objectsToActivate.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8546450017438975119, guid: 8794a4704ea494d4298411c28c5a8f53, type: 3}
-      propertyPath: _objectsToActivate.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
