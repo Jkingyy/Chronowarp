@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IInteractable
 {
-    
+    [SerializeField] bool  isEndDoor;
     
     Animator _animator;
     
@@ -66,16 +66,18 @@ public class Door : MonoBehaviour, IInteractable
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        
-        if (other.CompareTag("PlayerFeet"))
+        if (isEndDoor)
         {
-
-            Player = other.GetComponentInParent<PlayerMovement>();
-
-            if (Player != null)
+            if (other.CompareTag("PlayerFeet"))
             {
 
-                Player.PlayDoorEnterAnimation(this); 
+                Player = other.GetComponentInParent<PlayerMovement>();
+
+                if (Player != null)
+                {
+
+                    Player.PlayDoorEnterAnimation(this); 
+                }
             }
         }
     }

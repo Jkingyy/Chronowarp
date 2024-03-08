@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4733142585796564134}
   - component: {fileID: 4249197339833649441}
   m_Layer: 0
-  m_Name: Door
+  m_Name: End Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f086407baa3fb24eb13522d816411bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEndDoor: 1
 --- !u!61 &4249197339833649441
 BoxCollider2D:
   m_ObjectHideFlags: 0
