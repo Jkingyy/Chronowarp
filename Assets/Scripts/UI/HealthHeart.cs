@@ -17,10 +17,13 @@ public class HealthHeart : MonoBehaviour
     
     private HeartStatus _currentStatus;
     private Animator _animator;
+
+    
     void Awake()
     {
         _heartImage = GetComponent<Image>();
         _animator = GetComponent<Animator>();
+
     }
     
 

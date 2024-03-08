@@ -57,9 +57,9 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// ////////////////BOOL CHECKS////////////////////////
     /// </summary>
-    public bool isDashing;
-    public bool hasDashed;
-    public bool isSprinting;
+    public bool isDashing { get; private set; }
+    public bool hasDashed { get; private set; }
+    public bool isSprinting { get; private set; }
     bool canMove = true;
     
     const string PLAYER_LOAD = "LoadAfterLoop";
@@ -70,22 +70,22 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private Animator _animator;
     private Recording _recording;
+    private PlayerResources _playerResources;
+    [SerializeField] PlayerStats playerStats;
     /// <summary>
     /// ////////////////Scene REFERENCES////////////////////////
     /// </summary>
     
     void Awake()
     {
-        
+        _animator = GetComponent<Animator>();
+        _rb = GetComponent<Rigidbody2D>();
+        _recording = GetComponent<Recording>();
+        _playerResources = GetComponent<PlayerResources>();
     }
     // Start is called before the first frame update
     void Start()
     {
-        _animator = GetComponent<Animator>();
-        _rb = GetComponent<Rigidbody2D>();
-        _recording = GetComponent<Recording>();
-        
-        
         DisablePlayerMovement();
         _animator.Play(PLAYER_LOAD);
         currentSpeed = walkSpeed;
@@ -115,7 +115,14 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetButtonDown("Loop"))
             {
-                OnLoop.Invoke();
+                if (playerStats.currentHealth <= 1)
+                {
+                    _playerResources.Damage(1);
+                }
+                else
+                {
+                    OnLoop.Invoke();
+                }
             }
         }
 

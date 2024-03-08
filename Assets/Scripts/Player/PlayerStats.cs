@@ -17,6 +17,17 @@ public class PlayerStats : ScriptableObject
     {
         newLevel = value;
     }
+
+    void ResetHealth()
+    {
+        currentHealth = maxHealth;
+    }
+    
+    public void StartNewLevel()
+    {
+        ResetHealth();
+        newLevel = false;
+    }
 }
 
 

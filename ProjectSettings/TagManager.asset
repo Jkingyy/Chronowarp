@@ -8,6 +8,7 @@ TagManager:
   - PlayerGhost
   - PlayerFeet
   - SceneTransition
+  - HealthHeartBar
   layers:
   - Default
   - TransparentFX

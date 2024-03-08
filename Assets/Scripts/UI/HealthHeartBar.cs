@@ -32,7 +32,7 @@ public class HealthHeartBar : MonoBehaviour
 
     }
 
-    void DrawHearts()
+    public void DrawHearts()
     {
         ClearHearts();
         

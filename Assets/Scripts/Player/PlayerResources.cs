@@ -13,11 +13,16 @@ public class PlayerResources : MonoBehaviour, IDamageable
     
     private Animator _animator;
     private SceneTransition _sceneTransition;
+    private HealthHeartBar _healthHeartBar;
+    private PlayerMovement _playerMovement;
+    
     
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _sceneTransition = GameObject.FindGameObjectWithTag("SceneTransition").GetComponent<SceneTransition>();
+        _healthHeartBar = GameObject.FindGameObjectWithTag("HealthHeartBar").GetComponent<HealthHeartBar>();
+        _playerMovement = GetComponent<PlayerMovement>();
     }
     // Start is called before the first frame update
     void Start()
@@ -27,6 +32,7 @@ public class PlayerResources : MonoBehaviour, IDamageable
             playerStats.currentHealth = playerStats.maxHealth;
             playerStats.newLevel = false;
             _sceneTransition.FadeToClear();
+            _healthHeartBar.DrawHearts();
         }
         if(playerStats.currentHealth <= 0)
         {
@@ -52,6 +58,7 @@ public class PlayerResources : MonoBehaviour, IDamageable
     void Die()
     {
         DestroyAllGhosts();
+        _playerMovement.DisablePlayerMovement();
         _animator.SetTrigger("Die");
     }
 
