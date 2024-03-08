@@ -13,6 +13,8 @@ public class Button : MonoBehaviour
     
     [SerializeField] List<GameObject> _objectsToActivate;
 
+    public bool isPressed;
+    public bool isEmpty;
 
     private bool _hasPressed;
     private bool _hasReleased;
@@ -29,9 +31,9 @@ public class Button : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        isEmpty = true;
 
     }
     
@@ -39,18 +41,16 @@ public class Button : MonoBehaviour
     {
        foreach (GameObject interactableObject in _objectsToActivate)
         {
+            if(interactableObject == null) continue;
+            
             IInteractable interactable = interactableObject.GetComponent<IInteractable>();
             
             if(interactable == null) continue;
 
-            if (hasInteracted)
-            {
-                interactable.Activate();
-            }
-            else
-            {
-                interactable.Deactivate();
-            }
+
+            interactable.ChangeState();
+            
+
         }
     }
 
@@ -58,17 +58,33 @@ public class Button : MonoBehaviour
     {
         if(other.CompareTag("PlayerFeet"))
         {
-            Interact(true);
-            _spriteRenderer.sprite = _pressedButton;
+            if (!isPressed)
+            {
+                Interact(true);
+                _spriteRenderer.sprite = _pressedButton;
+                isPressed = true;
+            }
         }
     }
-    
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if(other.CompareTag("PlayerFeet"))
+        {
+            isEmpty = false;
+        }
+    }
+
     void OnTriggerExit2D(Collider2D other)
     {
         if(other.CompareTag("PlayerFeet"))
         {
-            Interact(false);
-            _spriteRenderer.sprite = _releasedButton;
+            if (isPressed && isEmpty)
+            {
+                Interact(false);
+                _spriteRenderer.sprite = _releasedButton;
+                isPressed = false;
+            }
         }
     }
 }

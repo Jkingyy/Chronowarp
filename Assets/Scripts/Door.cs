@@ -7,8 +7,11 @@ using UnityEngine;
 public class Door : MonoBehaviour, IInteractable
 {
     [SerializeField] bool  isEndDoor;
+    [SerializeField] bool  startOpen;
     
     Animator _animator;
+    
+    bool isActive;
     
     const string DOOR_OPEN = "Open";
     const string DOOR_CLOSE = "Close";
@@ -27,7 +30,10 @@ public class Door : MonoBehaviour, IInteractable
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(startOpen)
+        {
+            Activate();
+        }
     }
 
     // Update is called once per frame
@@ -49,11 +55,26 @@ public class Door : MonoBehaviour, IInteractable
     {
         ChangeAnimationState(DOOR_OPEN);
         _collider.isTrigger = true;
+        isActive = true;
     }
+
+    public void ChangeState()
+    {
+        if (isActive)
+        {
+            Deactivate();
+        }
+        else
+        {
+            Activate();
+        }
+    }
+    
     public void Deactivate()
     {
         ChangeAnimationState(DOOR_CLOSE);
         _collider.isTrigger = false;
+        isActive = false;
     }
 
     void LevelFinished()
