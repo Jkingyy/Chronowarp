@@ -60348,17 +60348,9 @@ PrefabInstance:
       propertyPath: OnLevelFinish.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1385651939}
-    - target: {fileID: 5876397589550319066, guid: d262986700a2b6d40a25c95c6f3b2b54, type: 3}
-      propertyPath: OnLevelFinish.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: FadeToClear
-      objectReference: {fileID: 0}
     - target: {fileID: 7170078315195552131, guid: d262986700a2b6d40a25c95c6f3b2b54, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7170078315195552131, guid: d262986700a2b6d40a25c95c6f3b2b54, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
