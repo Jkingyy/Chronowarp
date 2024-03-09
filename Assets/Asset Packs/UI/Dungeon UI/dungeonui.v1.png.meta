@@ -1,0 +1,616 @@
+fileFormatVersion: 2
+guid: f3e63d64b7959b442b3af60b03d99e23
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dungeonui.v1_1
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 214
+        width: 27
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 2, z: 4, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 913d5b9efd5f17244aa33285ecb9ada3
+      internalID: -72096592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonui.v1_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 364
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c60ca989322a44d458e299dd63383fc2
+      internalID: -98451736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonui.v1_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 364
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef838a966810dcc46bee4e856d035839
+      internalID: -136026232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonui.v1_9
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 332
+        width: 40
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 6, z: 6, w: 8}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e3737e4af7ad9b4aae86e3d617afb78
+      internalID: 2010632986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonui.v1_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 333
+        width: 40
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 5, z: 6, w: 6}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6526aa8690570a141a125b7c02a2a3a4
+      internalID: -384750110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonui.v1_12
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 300
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 8, z: 8, w: 8}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd6df93ddcc100f4989a57260551d348
+      internalID: 2021731396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonui.v1_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 300
+        width: 40
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 7, z: 6, w: 8}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f89d845449c6ae44fb63a0583fdd16e4
+      internalID: -301278793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonui.v1_17
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 277
+        width: 7
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bf58da48bf1a374f9ebda3e6568a28b
+      internalID: 2109505227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonui.v1_18
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 285
+        width: 22
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d83e6e958319f7344aba5910214f14a7
+      internalID: 2072235703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonui.v1_19
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 268
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 3, y: 2, z: 3, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab90b779da180f64fa0de89055d45850
+      internalID: -1221876711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonui.v1_22
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 277
+        width: 24
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f465216c0cc0ba48916e9544bd90e7a
+      internalID: -239604141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonui.v1_23
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 273
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 2, z: 3, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 408c9a8fdf0462649941d959a7faf7df
+      internalID: -1030068666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonui.v1_26
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 267
+        width: 23
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab7cd0b6210bb4243ae8595eda58d70b
+      internalID: 351057226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonui.v1_31
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 252
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62ac7d87c8fc3b349a449a13908b8715
+      internalID: -1802216770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonui.v1_35
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 214
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 2, z: 0, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05919819350067241a9e9d97dcb0896f
+      internalID: -2084229565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonui.v1_36
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 214
+        width: 32
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 2, z: 4, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc40d60b23390894c9da11740a893b86
+      internalID: -382954207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonui.v1_37
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 214
+        width: 32
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 2, z: 4, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ddce31243d916248bd6960a6c1893bc
+      internalID: 560811689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      dungeonui.v1_0: 578166324
+      dungeonui.v1_1: -72096592
+      dungeonui.v1_10: -384750110
+      dungeonui.v1_100: -1168530458
+      dungeonui.v1_101: 1785326128
+      dungeonui.v1_102: 1187427964
+      dungeonui.v1_103: -1956579585
+      dungeonui.v1_104: -1467715494
+      dungeonui.v1_105: 772785843
+      dungeonui.v1_11: -8173593
+      dungeonui.v1_12: 2021731396
+      dungeonui.v1_13: -301278793
+      dungeonui.v1_14: 185042869
+      dungeonui.v1_15: -185033637
+      dungeonui.v1_16: 725861157
+      dungeonui.v1_17: 2109505227
+      dungeonui.v1_18: 2072235703
+      dungeonui.v1_19: -1221876711
+      dungeonui.v1_2: 1270148682
+      dungeonui.v1_20: 708392292
+      dungeonui.v1_21: 705342817
+      dungeonui.v1_22: -239604141
+      dungeonui.v1_23: -1030068666
+      dungeonui.v1_24: -1861572125
+      dungeonui.v1_25: -775312572
+      dungeonui.v1_26: 351057226
+      dungeonui.v1_27: 107400390
+      dungeonui.v1_28: -1333962472
+      dungeonui.v1_29: -974719787
+      dungeonui.v1_3: -98451736
+      dungeonui.v1_30: 319352882
+      dungeonui.v1_31: -1802216770
+      dungeonui.v1_32: -591146516
+      dungeonui.v1_33: 964353003
+      dungeonui.v1_34: 1904479137
+      dungeonui.v1_35: -2084229565
+      dungeonui.v1_36: -382954207
+      dungeonui.v1_37: 560811689
+      dungeonui.v1_38: -1635807365
+      dungeonui.v1_39: -2016850418
+      dungeonui.v1_4: -136026232
+      dungeonui.v1_40: 581786616
+      dungeonui.v1_41: -2130872252
+      dungeonui.v1_42: 1491560446
+      dungeonui.v1_43: 1200871274
+      dungeonui.v1_44: 89563239
+      dungeonui.v1_45: 1349103405
+      dungeonui.v1_46: -989328152
+      dungeonui.v1_47: 159998764
+      dungeonui.v1_48: -1880659084
+      dungeonui.v1_49: -1054855604
+      dungeonui.v1_5: -855220325
+      dungeonui.v1_50: -1614213772
+      dungeonui.v1_51: -1930849851
+      dungeonui.v1_52: -92719139
+      dungeonui.v1_53: -754110955
+      dungeonui.v1_54: 1785795984
+      dungeonui.v1_55: -249116172
+      dungeonui.v1_56: -647120990
+      dungeonui.v1_57: -1030809084
+      dungeonui.v1_58: 1428917470
+      dungeonui.v1_59: 1372736244
+      dungeonui.v1_6: -185185061
+      dungeonui.v1_60: 1641562720
+      dungeonui.v1_61: -1574300902
+      dungeonui.v1_62: -1011441018
+      dungeonui.v1_63: 450236198
+      dungeonui.v1_64: -23919491
+      dungeonui.v1_65: 273001847
+      dungeonui.v1_66: 775955892
+      dungeonui.v1_67: 1504401604
+      dungeonui.v1_68: -671340620
+      dungeonui.v1_69: -64829100
+      dungeonui.v1_7: 790450571
+      dungeonui.v1_70: 1125980098
+      dungeonui.v1_71: 1424566570
+      dungeonui.v1_72: 456547444
+      dungeonui.v1_73: -2080934924
+      dungeonui.v1_74: -795105386
+      dungeonui.v1_75: 1243870637
+      dungeonui.v1_76: 1854318633
+      dungeonui.v1_77: -1472477341
+      dungeonui.v1_78: -2068441761
+      dungeonui.v1_79: 1806153830
+      dungeonui.v1_8: -196970526
+      dungeonui.v1_80: 427005021
+      dungeonui.v1_81: -1097903949
+      dungeonui.v1_82: -1763022951
+      dungeonui.v1_83: -869734520
+      dungeonui.v1_84: 1915715568
+      dungeonui.v1_85: -1919987175
+      dungeonui.v1_86: -1729330571
+      dungeonui.v1_87: 1369638829
+      dungeonui.v1_88: 1080138850
+      dungeonui.v1_89: -787576617
+      dungeonui.v1_9: 2010632986
+      dungeonui.v1_90: 1693034309
+      dungeonui.v1_91: -1240581361
+      dungeonui.v1_92: 1865142221
+      dungeonui.v1_93: 1132680285
+      dungeonui.v1_94: -1404729815
+      dungeonui.v1_95: -645455513
+      dungeonui.v1_96: -1141605749
+      dungeonui.v1_97: 1925638829
+      dungeonui.v1_98: -1856590282
+      dungeonui.v1_99: -1900649585
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
