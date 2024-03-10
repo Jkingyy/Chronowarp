@@ -318,7 +318,7 @@ public class PlayerMovement : MonoBehaviour
         _rb.velocity = Vector2.zero;
     }
 
-    void EnablePlayerMovement()
+    public void EnablePlayerMovement()
     {
         canMove = true;
     }

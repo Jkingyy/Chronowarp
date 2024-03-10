@@ -25,10 +25,6 @@ public class MainMenu : MonoBehaviour
         
     }
     
-    public void StartButton()
-    {
-
-    }
 
     public void FillLevelSelect()
     {

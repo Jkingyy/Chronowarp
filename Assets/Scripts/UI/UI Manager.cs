@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,13 @@ public class UIManager : MonoBehaviour
     
     public UnityEvent SetDefaultState;
     
+    private PlayerMovement _playerMovement;
+
+    void Awake()
+    {
+        _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,12 +74,14 @@ public class UIManager : MonoBehaviour
     
     public void ResumeGame()
     {
+        _playerMovement.EnablePlayerMovement();
         Time.timeScale = _pauseMenu.activeSelf ? 1 : 0;
         _pauseMenu.SetActive(!_pauseMenu.activeSelf);
     }
     
     public void PauseGame()
     {
+        _playerMovement.DisablePlayerMovement();
         if (Time.timeScale != 0)
         {
             Time.timeScale = _pauseMenu.activeSelf ? 1 : 0;

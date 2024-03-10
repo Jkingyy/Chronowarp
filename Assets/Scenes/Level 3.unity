@@ -62833,9 +62833,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 5815656395960740320, guid: 290cc33c7ceac25498cd9d676ff985c8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 6379914432753999350, guid: 290cc33c7ceac25498cd9d676ff985c8, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379914432753999350, guid: 290cc33c7ceac25498cd9d676ff985c8, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7213810865049777963, guid: 290cc33c7ceac25498cd9d676ff985c8, type: 3}
       propertyPath: level
