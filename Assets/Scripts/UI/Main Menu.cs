@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     
     [SerializeField] List<LevelButton> levelButtons = new List<LevelButton>();
     
-
+    [SerializeField] PlayerStats playerStats;
     
     // Start is called before the first frame update
     void Start()
@@ -44,6 +44,8 @@ public class MainMenu : MonoBehaviour
         {
             if(levelButtons[i].level.isCurrentLevel)
             {
+                playerStats.ResetHealth();
+                playerStats.SetNewLevel(true);
                 SceneManager.LoadScene(i + 1);
             }
         }

@@ -1793,6 +1793,7 @@ MonoBehaviour:
   - {fileID: 404917880}
   - {fileID: 1194803529}
   - {fileID: 357433220}
+  playerStats: {fileID: 11400000, guid: 6002fb3eafbfaed49aba2a356410483c, type: 2}
 --- !u!4 &1257599129
 Transform:
   m_ObjectHideFlags: 0

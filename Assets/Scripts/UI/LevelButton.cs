@@ -22,6 +22,8 @@ public class LevelButton : MonoBehaviour
     {
         if(level.isComplete || level.isCurrentLevel)
         {
+            playerStats.ResetHealth();
+            playerStats.SetNewLevel(true);
             playerStats.currentLevel = level.levelNumber;
             SceneManager.LoadScene(level.levelNumber);
         }
