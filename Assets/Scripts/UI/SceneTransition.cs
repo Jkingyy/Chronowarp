@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,7 +27,8 @@ public class SceneTransition : MonoBehaviour
     
     void LoadNextScene()
     {
-        SceneManager.LoadScene(playerStats.currentLevel++);
+        playerStats.currentLevel++;
+        SceneManager.LoadScene(playerStats.currentLevel);
     }
     
     

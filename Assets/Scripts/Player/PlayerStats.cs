@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "New PlayerStats", menuName = "PlayerStats")]
 public class PlayerStats : ScriptableObject
@@ -10,7 +11,8 @@ public class PlayerStats : ScriptableObject
     
     public bool newLevel;
     
-    public int currentLevel;
+    public int currentLevel; 
+    public int totalCompletedLevel;
     
     
     public void SetNewLevel(bool value)
@@ -18,7 +20,7 @@ public class PlayerStats : ScriptableObject
         newLevel = value;
     }
 
-    void ResetHealth()
+    public void ResetHealth()
     {
         currentHealth = maxHealth;
     }

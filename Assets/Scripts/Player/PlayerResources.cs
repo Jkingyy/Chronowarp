@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.iOS;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -15,13 +14,14 @@ public class PlayerResources : MonoBehaviour, IDamageable
     private SceneTransition _sceneTransition;
     private HealthHeartBar _healthHeartBar;
     private PlayerMovement _playerMovement;
-    
+    private UIManager _uiManager;
     
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _sceneTransition = GameObject.FindGameObjectWithTag("SceneTransition").GetComponent<SceneTransition>();
         _healthHeartBar = GameObject.FindGameObjectWithTag("HealthHeartBar").GetComponent<HealthHeartBar>();
+        _uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         _playerMovement = GetComponent<PlayerMovement>();
     }
     // Start is called before the first frame update
@@ -60,6 +60,11 @@ public class PlayerResources : MonoBehaviour, IDamageable
         DestroyAllGhosts();
         _playerMovement.DisablePlayerMovement();
         _animator.SetTrigger("Die");
+    }
+    
+    void ShowGameOver()
+    {
+        _uiManager.GameOver();
     }
 
 
