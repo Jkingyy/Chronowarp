@@ -64485,17 +64485,6 @@ Transform:
   - {fileID: 2060661379}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1307902699 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8472064719681080656, guid: 290cc33c7ceac25498cd9d676ff985c8, type: 3}
-  m_PrefabInstance: {fileID: 6464082971457430763}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90e46a5f2d66cc043bfb3b659f06c5e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1443297546
 GameObject:
   m_ObjectHideFlags: 0
@@ -67074,7 +67063,7 @@ PrefabInstance:
     - target: {fileID: 5876397589550319066, guid: d262986700a2b6d40a25c95c6f3b2b54, type: 3}
       propertyPath: OnLevelFinish.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1307902699}
+      objectReference: {fileID: 6464082971457430764}
     - target: {fileID: 5876397589550319066, guid: d262986700a2b6d40a25c95c6f3b2b54, type: 3}
       propertyPath: OnLevelFinish.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
@@ -67158,7 +67147,7 @@ PrefabInstance:
     - target: {fileID: 6989257199926236545, guid: d262986700a2b6d40a25c95c6f3b2b54, type: 3}
       propertyPath: _sceneTransition
       value: 
-      objectReference: {fileID: 1307902699}
+      objectReference: {fileID: 0}
     - target: {fileID: 7170078315195552131, guid: d262986700a2b6d40a25c95c6f3b2b54, type: 3}
       propertyPath: m_Name
       value: Player
@@ -67233,6 +67222,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 290cc33c7ceac25498cd9d676ff985c8, type: 3}
+--- !u!114 &6464082971457430764 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8322710964380891303, guid: 290cc33c7ceac25498cd9d676ff985c8, type: 3}
+  m_PrefabInstance: {fileID: 6464082971457430763}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e46a5f2d66cc043bfb3b659f06c5e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

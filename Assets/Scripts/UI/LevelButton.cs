@@ -16,10 +16,13 @@ public class LevelButton : MonoBehaviour
     [SerializeField] Sprite currentLevel;
     [SerializeField] Sprite completedLevel;
     
+    [SerializeField] PlayerStats playerStats;
+    
     public void LoadLevel()
     {
         if(level.isComplete || level.isCurrentLevel)
         {
+            playerStats.currentLevel = level.levelNumber;
             SceneManager.LoadScene(level.levelNumber);
         }
     }

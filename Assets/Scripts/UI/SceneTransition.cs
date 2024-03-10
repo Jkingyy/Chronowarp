@@ -28,7 +28,8 @@ public class SceneTransition : MonoBehaviour
     
     void LoadNextScene()
     {
-        SceneManager.LoadScene(playerStats.currentLevel++);
+        playerStats.currentLevel++;
+        SceneManager.LoadScene(playerStats.currentLevel);
     }
     
     

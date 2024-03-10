@@ -286,3 +286,4 @@ MonoBehaviour:
   uncompleteLevel: {fileID: -2084229565, guid: f3e63d64b7959b442b3af60b03d99e23, type: 3}
   currentLevel: {fileID: -72096592, guid: f3e63d64b7959b442b3af60b03d99e23, type: 3}
   completedLevel: {fileID: -382954207, guid: f3e63d64b7959b442b3af60b03d99e23, type: 3}
+  playerStats: {fileID: 11400000, guid: 6002fb3eafbfaed49aba2a356410483c, type: 2}
