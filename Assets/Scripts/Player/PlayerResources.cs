@@ -47,11 +47,18 @@ public class PlayerResources : MonoBehaviour, IDamageable
     public void Damage(int DamageAmount)
     {
         playerStats.currentHealth -= DamageAmount;
+        _healthHeartBar.DrawHearts();
         
         if (playerStats.currentHealth <= 0)
         {
             Die();
         }
+        else
+        {
+            _animator.SetTrigger("Damaged");
+        }
+        
+        
     }
     
     

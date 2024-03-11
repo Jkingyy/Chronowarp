@@ -115,14 +115,13 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetButtonDown("Loop"))
             {
-                if (playerStats.currentHealth <= 1)
-                {
-                    _playerResources.Damage(1);
-                }
-                else
+                _playerResources.Damage(1);
+                if (playerStats.currentHealth > 0)
                 {
                     OnLoop.Invoke();
+                    _animator.SetTrigger("Loop");
                 }
+
             }
         }
 

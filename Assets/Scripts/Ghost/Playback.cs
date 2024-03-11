@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Ghost
 {
-    public class Playback : MonoBehaviour
+    public class Playback : MonoBehaviour, IDamageable
     {
     
         //list of inputs and movements for each frame
@@ -183,6 +183,10 @@ namespace Ghost
         
             animator.SetBool("isSprinting", _isSprinting);
 
+        }
+        public void Damage(int DamageAmount)
+        {
+            Destroy(gameObject);
         }
     }
 }
