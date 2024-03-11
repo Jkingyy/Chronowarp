@@ -41,12 +41,12 @@ public class PlayerBullet : MonoBehaviour
     #region Collision Handling
     private void OnCollisionEnter2D(Collision2D other)
     {
-        //Damage the enemy
-        // IDamageable iDamageable = other.gameObject.GetComponent<IDamageable>();
-        // if (iDamageable != null)
-        // {
-        //     iDamageable.Damage(bulletDamage);
-        // }
+        // Damage the enemy
+         IDamageable iDamageable = other.gameObject.GetComponent<IDamageable>();
+         if (iDamageable != null)
+         {
+             iDamageable.Damage(1);
+         }
         
         // Destroy the bullet
         explosion.Play();

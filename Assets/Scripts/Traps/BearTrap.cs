@@ -52,6 +52,10 @@ public class BearTrap : MonoBehaviour, IInteractable
          
          PlayerMovement playerMovement = other.gameObject.GetComponentInParent<PlayerMovement>();
          if(playerMovement == null) return;
+         
+         Animator playerAnim = other.gameObject.GetComponentInParent<Animator>();
+         playerAnim.SetTrigger("Loop");
+         
          playerMovement.OnLoop.Invoke();
 
         

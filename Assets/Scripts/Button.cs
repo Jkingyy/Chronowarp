@@ -18,7 +18,7 @@ public class Button : MonoBehaviour
 
     private bool _hasPressed;
     private bool _hasReleased;
-    
+    public  bool hasDestructible;
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -27,7 +27,12 @@ public class Button : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (hasDestructible)
+        {
+            _spriteRenderer.sprite = _pressedButton;
+            Interact(true);
+            isPressed = true;
+        }
     }
 
     // Update is called once per frame
@@ -40,7 +45,7 @@ public class Button : MonoBehaviour
     void Interact(bool hasInteracted)
     {
        foreach (GameObject interactableObject in _objectsToActivate)
-        {
+       {
             if(interactableObject == null) continue;
             
             IInteractable interactable = interactableObject.GetComponent<IInteractable>();
@@ -51,7 +56,7 @@ public class Button : MonoBehaviour
             interactable.ChangeState();
             
 
-        }
+       }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -67,9 +72,20 @@ public class Button : MonoBehaviour
         }
     }
 
+    public void isDestroyed()
+    {
+        hasDestructible = false;
+        if (isEmpty)
+        {
+            Interact(true);
+            _spriteRenderer.sprite = _releasedButton;
+            isPressed = false;
+        }
+    }
+    
     void OnTriggerStay2D(Collider2D other)
     {
-        if(other.CompareTag("PlayerFeet"))
+        if(other.CompareTag("PlayerFeet") || other.CompareTag("Destructible")) 
         {
             isEmpty = false;
         }
