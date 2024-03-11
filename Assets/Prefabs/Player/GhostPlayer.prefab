@@ -5218,6 +5218,8 @@ MonoBehaviour:
   collider: {fileID: 6971747821509114794}
   dust: {fileID: 9118827722311660236}
   loopingDust: {fileID: 6123100727105613648}
+  playerMovement: {fileID: 0}
+  isLive: 0
 --- !u!1 &7323805422000288976
 GameObject:
   m_ObjectHideFlags: 0

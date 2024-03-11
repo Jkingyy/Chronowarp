@@ -10,6 +10,7 @@ TagManager:
   - SceneTransition
   - HealthHeartBar
   - UIManager
+  - Destructible
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - PlayerBullet
   - Interactable
   - Feet
-  - 
-  - 
+  - Obstacle
+  - Enemy
   - 
   - 
   - 
