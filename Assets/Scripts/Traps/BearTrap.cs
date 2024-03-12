@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Build;
 using UnityEngine;
 
 public class BearTrap : MonoBehaviour, IInteractable
 {
     Collider2D trapCollider;
     Animator _animator;
+    
+    [SerializeField] AudioClip bearTrapSound;
     
     private bool _isActive;
     
@@ -21,6 +22,7 @@ public class BearTrap : MonoBehaviour, IInteractable
     public void Activate()
     {
         _animator.SetTrigger("Activate");
+        SoundFXManager.Instance.PlaySoundFXClip(bearTrapSound,transform,1f);
     }
 
     public void Deactivate()

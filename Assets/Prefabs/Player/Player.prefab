@@ -10044,6 +10044,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9b64e9f96f012254e860a6aa1068918b, type: 3}
   - {fileID: 8300000, guid: e2c17cfa1a7c4934d8d3eab65762d56a, type: 3}
   - {fileID: 8300000, guid: 1c314d366cdfd4b41882e114f48d1f2e, type: 3}
+  playerEnter: {fileID: 8300000, guid: 1f00a30276369f04a9630b9d7ae01281, type: 3}
   bulletPrefab: {fileID: 5186704289563623660, guid: 395eb335996df224781413ba85435eab, type: 3}
   OnLoop:
     m_PersistentCalls:

@@ -8,6 +8,7 @@ public class Destructible : MonoBehaviour,IDamageable
 {
     Animator _animator;
     [SerializeField] Button _button;
+    [SerializeField] AudioClip destroySound; 
 
 
     void Awake()
@@ -18,6 +19,7 @@ public class Destructible : MonoBehaviour,IDamageable
     {
         Debug.Log("Destructible Damaged");
         _animator.SetTrigger("Destroy");
+        SoundFXManager.Instance.PlaySoundFXClip(destroySound,transform,1f);
         _button.isDestroyed();
     }
     

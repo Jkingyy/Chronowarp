@@ -12,7 +12,8 @@ public class SpikeTrap : MonoBehaviour, IInteractable
      bool isActive;
      
      [SerializeField] bool startActive;
-    
+     [SerializeField] AudioClip spikeSound;
+     
     bool trapIsLive;
     void Awake()
     {
@@ -59,6 +60,12 @@ public class SpikeTrap : MonoBehaviour, IInteractable
     {
         trapIsLive = false;
     }
+     
+    public void PlaySound()
+    {
+        SoundFXManager.Instance.PlaySoundFXClip(spikeSound,transform,1f);
+    }
+    
     void OnTriggerStay2D(Collider2D other)
     {
         

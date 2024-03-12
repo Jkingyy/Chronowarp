@@ -165,4 +165,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b703944aaa41d42b274ce6bfb660d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startActive: 1
+  startActive: 0
+  spikeSound: {fileID: 8300000, guid: c92da9cd9eb90e441ac24320955b6527, type: 3}

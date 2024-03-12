@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 0}
+  destroySound: {fileID: 8300000, guid: 32f3b0f099f2be942ae6cc2ed2d27b8e, type: 3}
 --- !u!61 &2311601260719221208
 BoxCollider2D:
   m_ObjectHideFlags: 0
