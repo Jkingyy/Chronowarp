@@ -7,6 +7,8 @@ public class SettingsSO : ScriptableObject
 {
     public int resolutionIndex;
     public bool fullScreen;
-    public float volume;
+    public float masterVolume;
+    public float musicVolume;
+    public float soundFXVolume;
     public int quality;
 }

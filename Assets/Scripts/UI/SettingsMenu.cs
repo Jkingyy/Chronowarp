@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
@@ -14,7 +15,9 @@ public class SettingsMenu : MonoBehaviour
     
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown qualityDropdown;
-    public Slider volumeSlider;
+    public Slider masterVolumeSlider;
+    public Slider musicVolumeSlider;
+    public Slider soundFXVolumeSlider;
     public Toggle fullscreenToggle;
     
     Resolution[] resolutions;
@@ -46,7 +49,11 @@ public class SettingsMenu : MonoBehaviour
         
         SetResolution(settings.resolutionIndex);
         SetFullscreen(settings.fullScreen);
-        SetVolume(settings.volume);
+        
+        SetMasterVolume(settings.masterVolume);
+        SetMusicVolume(settings.musicVolume);
+        SetSoundFXVolume(settings.soundFXVolume);
+        
         SetQuality(settings.quality);
         RefreshDisplay();
     }
@@ -57,7 +64,9 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
         qualityDropdown.value = settings.quality;
         qualityDropdown.RefreshShownValue();
-        volumeSlider.value = settings.volume;
+        masterVolumeSlider.value = settings.masterVolume;
+        musicVolumeSlider.value = settings.musicVolume;
+        soundFXVolumeSlider.value = settings.soundFXVolume;
         fullscreenToggle.isOn = settings.fullScreen;
     }
     
@@ -68,10 +77,20 @@ public class SettingsMenu : MonoBehaviour
         settings.resolutionIndex = resolutionIndex;
     }
 
-    public void SetVolume(float volume)
+    public void SetMasterVolume(float volume)
     {
-        audioMixer.SetFloat("volume", volume);
-        settings.volume = volume;
+        audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
+        settings.masterVolume = volume;
+    }
+    public void SetMusicVolume(float volume)
+    {
+        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
+        settings.musicVolume = volume;
+    }
+    public void SetSoundFXVolume(float volume)
+    {
+        audioMixer.SetFloat("SoundFXVolume", Mathf.Log10(volume) * 20);
+        settings.soundFXVolume = volume;
     }
 
     public void SetQuality(int qualityIndex)
