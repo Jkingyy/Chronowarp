@@ -17,6 +17,11 @@ public class Door : MonoBehaviour, IInteractable
     const string DOOR_CLOSE = "Close";
     const string PLAYER_ENTER = "PlayerEnter";
     
+    [SerializeField] AudioClip doorOpen;
+    [SerializeField] AudioClip doorClose;
+
+    
+    
     string currentState;
     
     Collider2D _collider;
@@ -54,6 +59,7 @@ public class Door : MonoBehaviour, IInteractable
     public void Activate()
     {
         ChangeAnimationState(DOOR_OPEN);
+        SoundFXManager.Instance.PlaySoundFXClip(doorOpen,transform,0.5f);
         _collider.isTrigger = true;
         isActive = true;
     }
@@ -69,11 +75,13 @@ public class Door : MonoBehaviour, IInteractable
             Activate();
         }
     }
+
     
     public void Deactivate()
     {
         ChangeAnimationState(DOOR_CLOSE);
         _collider.isTrigger = false;
+        SoundFXManager.Instance.PlaySoundFXClip(doorClose,transform,1f);
         isActive = false;
     }
 

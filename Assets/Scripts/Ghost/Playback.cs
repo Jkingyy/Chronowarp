@@ -23,6 +23,8 @@ namespace Ghost
         [SerializeField] Animator animator;
         [SerializeField] SpriteRenderer sr;
         [SerializeField] new CapsuleCollider2D collider;
+        
+        [SerializeField] AudioClip[] footstepSounds;
     
         [SerializeField] private ParticleSystem dust;  
         [SerializeField] private ParticleSystem loopingDust;  
@@ -56,6 +58,11 @@ namespace Ghost
             {
                 HideGhost();
             }
+        }
+
+        public void PlayStepSound()
+        {
+            SoundFXManager.Instance.PlayRandomSoundFXClip(footstepSounds, transform, 1f);
         }
         
         public void ResetFrameCounter()

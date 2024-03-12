@@ -46,8 +46,25 @@ public class MainMenu : MonoBehaviour
             }
         }
     }
+    
+    [SerializeField] AudioClip hoverSound;
+    [SerializeField] AudioClip clickSound;
+    [SerializeField] AudioClip backSound;
 
-
+    public void PlayBackSound()
+    {
+        SoundFXManager.Instance.PlaySoundFXClip(backSound,transform,1f);
+    }
+    
+    public void PlayHoverSound()
+    {
+        SoundFXManager.Instance.PlaySoundFXClip(hoverSound,transform,1f);
+    }
+    
+    public void PlayClickSound()
+    {
+        SoundFXManager.Instance.PlaySoundFXClip(clickSound,transform,1f);
+    }
     
     public void QuitButton()
     {

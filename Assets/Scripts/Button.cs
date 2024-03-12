@@ -16,6 +16,9 @@ public class Button : MonoBehaviour
     public bool isPressed;
     public bool isEmpty;
 
+    [SerializeField] AudioClip _buttonPress;
+    [SerializeField] AudioClip _buttonRelease;
+    
     private bool _hasPressed;
     private bool _hasReleased;
     public  bool hasDestructible;
@@ -29,9 +32,8 @@ public class Button : MonoBehaviour
     {
         if (hasDestructible)
         {
-            _spriteRenderer.sprite = _pressedButton;
             Interact(true);
-            isPressed = true;
+            PressButton();
         }
     }
 
@@ -66,7 +68,8 @@ public class Button : MonoBehaviour
             if (!isPressed)
             {
                 Interact(true);
-                _spriteRenderer.sprite = _pressedButton;
+                PressButton();
+                
                 isPressed = true;
             }
         }
@@ -78,8 +81,8 @@ public class Button : MonoBehaviour
         if (isEmpty)
         {
             Interact(true);
-            _spriteRenderer.sprite = _releasedButton;
-            isPressed = false;
+            ReleaseButton();
+            
         }
     }
     
@@ -98,9 +101,22 @@ public class Button : MonoBehaviour
             if (isPressed && isEmpty)
             {
                 Interact(false);
-                _spriteRenderer.sprite = _releasedButton;
-                isPressed = false;
+                ReleaseButton();
             }
         }
+    }
+    
+    void ReleaseButton()
+    {
+        _spriteRenderer.sprite = _releasedButton;
+        isPressed = false;
+        SoundFXManager.Instance.PlaySoundFXClip(_buttonRelease,transform,0.5f);
+    }
+    
+    void PressButton()
+    {
+        _spriteRenderer.sprite = _pressedButton;
+        isPressed = true;
+        SoundFXManager.Instance.PlaySoundFXClip(_buttonPress,transform,1f);
     }
 }

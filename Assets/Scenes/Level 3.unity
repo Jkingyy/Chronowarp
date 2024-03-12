@@ -62774,6 +62774,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5876397589550319066, guid: d262986700a2b6d40a25c95c6f3b2b54, type: 3}
+      propertyPath: playerEnter
+      value: 
+      objectReference: {fileID: 8300000, guid: 1f00a30276369f04a9630b9d7ae01281, type: 3}
+    - target: {fileID: 5876397589550319066, guid: d262986700a2b6d40a25c95c6f3b2b54, type: 3}
       propertyPath: OnLevelFinish.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 6464082971457430764}

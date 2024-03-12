@@ -122,6 +122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEndDoor: 0
   startOpen: 0
+  doorOpen: {fileID: 8300000, guid: 7042fe4814ba6ac4e8b373a6235b06fb, type: 3}
+  doorClose: {fileID: 8300000, guid: f31823de7e18fc642bdba5ed929dc04f, type: 3}
 --- !u!61 &455804908529870989
 BoxCollider2D:
   m_ObjectHideFlags: 0

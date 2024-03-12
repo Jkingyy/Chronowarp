@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioClip shootSound;
     [SerializeField] AudioClip loopSound;
     [SerializeField] AudioClip[] footstepSounds;
+    [SerializeField] AudioClip playerEnter;
     
     /// <summary>
     /// ////////////////SHOOTING////////////////////////
@@ -128,12 +129,13 @@ public class PlayerMovement : MonoBehaviour
                     OnLoop.Invoke();
                     _animator.SetTrigger("Loop");
                 }
-
             }
         }
-
-
-
+    }
+    
+    void PlayPlayerEnter()
+    {
+        SoundFXManager.Instance.PlaySoundFXClip(playerEnter,transform,1f);
     }
     
     public void PlayStepSound()
@@ -143,7 +145,6 @@ public class PlayerMovement : MonoBehaviour
     
     public void PlayLoopSound()
     {
-        Debug.Log("Playing Loop Sound");
         SoundFXManager.Instance.PlaySoundFXClip(loopSound, transform, 1f);
     }
 

@@ -5216,6 +5216,15 @@ MonoBehaviour:
   animator: {fileID: 6896670698422976258}
   sr: {fileID: 9128384952575152114}
   collider: {fileID: 6971747821509114794}
+  footstepSounds:
+  - {fileID: 8300000, guid: 515afe2579d13fe4da77388f1b3cdc5d, type: 3}
+  - {fileID: 8300000, guid: cb9db7a462d2c974d8b7433a8571cfb8, type: 3}
+  - {fileID: 8300000, guid: 694daf9b391a11e4e86869abdd8eaae1, type: 3}
+  - {fileID: 8300000, guid: a0f262a27ecac7f47aa74982fc309730, type: 3}
+  - {fileID: 8300000, guid: 968af580072413d47b2fb6badae13198, type: 3}
+  - {fileID: 8300000, guid: 9b64e9f96f012254e860a6aa1068918b, type: 3}
+  - {fileID: 8300000, guid: e2c17cfa1a7c4934d8d3eab65762d56a, type: 3}
+  - {fileID: 8300000, guid: 1c314d366cdfd4b41882e114f48d1f2e, type: 3}
   dust: {fileID: 9118827722311660236}
   loopingDust: {fileID: 6123100727105613648}
   playerMovement: {fileID: 0}
