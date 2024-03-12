@@ -16,6 +16,8 @@ public class PlayerResources : MonoBehaviour, IDamageable
     private PlayerMovement _playerMovement;
     private UIManager _uiManager;
     
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] AudioClip damageSound;
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -56,6 +58,7 @@ public class PlayerResources : MonoBehaviour, IDamageable
         else
         {
             _animator.SetTrigger("Damaged");
+            SoundFXManager.Instance.PlaySoundFXClip(damageSound, transform, 1f);
         }
         
         
@@ -67,6 +70,7 @@ public class PlayerResources : MonoBehaviour, IDamageable
         DestroyAllGhosts();
         _playerMovement.DisablePlayerMovement();
         _animator.SetTrigger("Die");
+        SoundFXManager.Instance.PlaySoundFXClip(deathSound, transform, 1f);
     }
     
     void ShowGameOver()

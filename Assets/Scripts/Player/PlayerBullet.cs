@@ -14,6 +14,8 @@ public class PlayerBullet : MonoBehaviour
     private CircleCollider2D _circleCollider2D; // Reference to the CircleCollider2D component
     
     [SerializeField] ParticleSystem explosion;
+
+    [SerializeField] AudioClip bulletSound;
     
     #endregion
     
@@ -51,6 +53,7 @@ public class PlayerBullet : MonoBehaviour
         // Destroy the bullet
         explosion.Play();
         HideBullet();
+        SoundFXManager.Instance.PlaySoundFXClip(bulletSound, transform, 1f);
         Destroy(gameObject,0.6f);
     }
 

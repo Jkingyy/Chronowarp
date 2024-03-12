@@ -5254,6 +5254,7 @@ MonoBehaviour:
   shotSpeed: 10
   bulletDamage: 1
   explosion: {fileID: 2324711307441623310}
+  bulletSound: {fileID: 8300000, guid: 924eb2d746e24f84daacb920ffda6f2c, type: 3}
 --- !u!1 &7824854665018743846
 GameObject:
   m_ObjectHideFlags: 0

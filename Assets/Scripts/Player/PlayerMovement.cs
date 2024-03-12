@@ -39,6 +39,13 @@ public class PlayerMovement : MonoBehaviour
     private float _dashCounter;
     private float _dashCooldownCounter;
     
+    
+    
+    [SerializeField] AudioClip dashSound;
+    [SerializeField] AudioClip shootSound;
+    [SerializeField] AudioClip loopSound;
+    [SerializeField] AudioClip[] footstepSounds;
+    
     /// <summary>
     /// ////////////////SHOOTING////////////////////////
     /// </summary>
@@ -128,11 +135,22 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
+    
+    public void PlayStepSound()
+    {
+        SoundFXManager.Instance.PlayRandomSoundFXClip(footstepSounds, transform, 1f);
+    }
+    
+    public void PlayLoopSound()
+    {
+        Debug.Log("Playing Loop Sound");
+        SoundFXManager.Instance.PlaySoundFXClip(loopSound, transform, 1f);
+    }
 
     void GetInputs()
     {
         movementInput.x = Input.GetAxisRaw("Horizontal");
-        movementInput.y = Input.GetAxisRaw("Vertical");
+        movementInput.y = Input.GetAxisRaw("Vertical"); 
 
 
             if (Input.GetButtonDown("Sprint") && !isDashing)
@@ -172,6 +190,7 @@ public class PlayerMovement : MonoBehaviour
         hasDashed = true;
         isDashing = true;
         currentSpeed = dashSpeed;
+        SoundFXManager.Instance.PlaySoundFXClip(dashSound, transform, 1f);
         _dashCounter = dashLength;
         CreateParticle(dust);
 
@@ -215,6 +234,7 @@ public class PlayerMovement : MonoBehaviour
         PlayerBullet _PlayerBullet = Instantiate(bulletPrefab, _BulletSpawnPoint, Quaternion.identity).GetComponent<PlayerBullet>();
         _PlayerBullet.SetStraightVelocity(_direction);
         _animator.SetTrigger("Shoot");
+        SoundFXManager.Instance.PlaySoundFXClip(shootSound, transform, 1f);
     }
 
     void GetPlayerDirection()

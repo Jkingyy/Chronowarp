@@ -10032,6 +10032,18 @@ MonoBehaviour:
   movementInput: {x: 0, y: 0}
   dust: {fileID: 1983507789198438154}
   loopingDust: {fileID: 7562861715608288221}
+  dashSound: {fileID: 8300000, guid: f44f6eab8c8f9474da51ffa37d9301de, type: 3}
+  shootSound: {fileID: 8300000, guid: ea590bf19fe042d4d86dec25ab4ce455, type: 3}
+  loopSound: {fileID: 8300000, guid: 56ad502cda116fc4093435e25523253d, type: 3}
+  footstepSounds:
+  - {fileID: 8300000, guid: 515afe2579d13fe4da77388f1b3cdc5d, type: 3}
+  - {fileID: 8300000, guid: cb9db7a462d2c974d8b7433a8571cfb8, type: 3}
+  - {fileID: 8300000, guid: 694daf9b391a11e4e86869abdd8eaae1, type: 3}
+  - {fileID: 8300000, guid: a0f262a27ecac7f47aa74982fc309730, type: 3}
+  - {fileID: 8300000, guid: 968af580072413d47b2fb6badae13198, type: 3}
+  - {fileID: 8300000, guid: 9b64e9f96f012254e860a6aa1068918b, type: 3}
+  - {fileID: 8300000, guid: e2c17cfa1a7c4934d8d3eab65762d56a, type: 3}
+  - {fileID: 8300000, guid: 1c314d366cdfd4b41882e114f48d1f2e, type: 3}
   bulletPrefab: {fileID: 5186704289563623660, guid: 395eb335996df224781413ba85435eab, type: 3}
   OnLoop:
     m_PersistentCalls:
@@ -10051,6 +10063,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5876397589550319066}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: DisablePlayerMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5876397589550319066}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: PlayLoopSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10173,3 +10197,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 6002fb3eafbfaed49aba2a356410483c, type: 2}
+  deathSound: {fileID: 8300000, guid: d9169be9cb3e1ed449743afed47f2031, type: 3}
+  damageSound: {fileID: 8300000, guid: 4a88a1bdd9ac2c74c8449b31fbf1e889, type: 3}
