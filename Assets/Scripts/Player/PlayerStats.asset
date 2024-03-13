@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   maxHealth: 9
-  currentHealth: 7
+  currentHealth: 9
   newLevel: 0
-  currentLevel: 1
-  totalCompletedLevel: 0
+  currentLevel: 4
+  totalCompletedLevel: 3

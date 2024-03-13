@@ -31,7 +31,7 @@ public class PlayerResources : MonoBehaviour, IDamageable
     // Start is called before the first frame update
     void Start()
     {
-        playerStats.LoadData();
+        //playerStats.LoadData();
         
         if (playerStats.newLevel)
         {
