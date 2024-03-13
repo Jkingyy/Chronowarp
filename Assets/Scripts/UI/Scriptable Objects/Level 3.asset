@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Level 3
   m_EditorClassIdentifier: 
   levelNumber: 3
-  isComplete: 1
+  isComplete: 0
   isCurrentLevel: 0

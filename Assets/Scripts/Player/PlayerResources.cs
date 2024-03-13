@@ -16,6 +16,8 @@ public class PlayerResources : MonoBehaviour, IDamageable
     private PlayerMovement _playerMovement;
     private UIManager _uiManager;
     
+    
+    
     [SerializeField] AudioClip deathSound;
     [SerializeField] AudioClip damageSound;
     private void Awake()
