@@ -15,35 +15,7 @@ public class PlayerStats : ScriptableObject
     public int totalCompletedLevel;
     
     
-    public void SaveData()
-    {
 
-        PlayerPrefs.SetInt("CurrentLevel", currentLevel);
-        PlayerPrefs.SetInt("TotalCompletedLevel", totalCompletedLevel);
-        PlayerPrefs.SetInt("NewLevel", boolToInt(newLevel));
-    }
-    public void LoadData()
-    {
-        currentLevel = PlayerPrefs.GetInt("CurrentLevel", 1);
-        totalCompletedLevel = PlayerPrefs.GetInt("TotalCompletedLevel", 0);
-        newLevel = intToBool(PlayerPrefs.GetInt("NewLevel",0));
-    }
-    
-    int boolToInt(bool val)
-    {
-        if (val)
-            return 1;
-        else
-            return 0;
-    }
-
-    bool intToBool(int val)
-    {
-        if (val != 0)
-            return true;
-        else
-            return false;
-    }
     
     public void SetNewLevel(bool value)
     {
