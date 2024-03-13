@@ -325,6 +325,7 @@ public class PlayerMovement : MonoBehaviour
         if(_door == null) return;
         DisablePlayerMovement();
         StopAllParticles();
+        playerStats.SaveData();
         _door.ChangeAnimationState("PlayerEnter");
     }
 

@@ -336,7 +336,10 @@ MonoBehaviour:
   m_text: 'Thank You for playing Chronowarp!
 
 
-    I hope you enjoyed the game, currently
+    I hope you enjoyed the game!
+
+
+    Currently
     these are all the levels I made for the jam but I may come back in the future
     to continue development.'
   m_isRightToLeft: 0
