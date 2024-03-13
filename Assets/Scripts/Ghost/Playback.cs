@@ -50,7 +50,6 @@ namespace Ghost
             if (isLive && _frameCounter < playerPositions.Count)
             {
                 PlayFrame();
-                
             }
             
             

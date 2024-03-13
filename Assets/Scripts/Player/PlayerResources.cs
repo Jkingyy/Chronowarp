@@ -16,6 +16,8 @@ public class PlayerResources : MonoBehaviour, IDamageable
     private PlayerMovement _playerMovement;
     private UIManager _uiManager;
     
+    
+    
     [SerializeField] AudioClip deathSound;
     [SerializeField] AudioClip damageSound;
     private void Awake()
@@ -29,6 +31,8 @@ public class PlayerResources : MonoBehaviour, IDamageable
     // Start is called before the first frame update
     void Start()
     {
+        //playerStats.LoadData();
+        
         if (playerStats.newLevel)
         {
             playerStats.currentHealth = playerStats.maxHealth;

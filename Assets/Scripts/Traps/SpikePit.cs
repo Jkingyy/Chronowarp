@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class SpikePit : MonoBehaviour
 {
+    
+    public List<Collider2D> spikeColliders;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,8 @@ public class SpikePit : MonoBehaviour
     {
         if (!other.CompareTag("PlayerFeet")) return;
         
+        
+        
         IDamageable iDamageable = other.gameObject.GetComponentInParent<IDamageable>();
         if (iDamageable != null)
         {
@@ -29,8 +33,15 @@ public class SpikePit : MonoBehaviour
         
         PlayerMovement playerMovement = other.gameObject.GetComponentInParent<PlayerMovement>();
         if(playerMovement == null) return;
-        Collider2D collider = other.gameObject.GetComponent<Collider2D>();
-        collider.enabled = false;
+
+        foreach (var collider in spikeColliders)
+        {
+            collider.enabled = false;
+        }
+        
+        Animator playerAnim = other.gameObject.GetComponentInParent<Animator>();
+        playerAnim.SetTrigger("Loop");
+        
         playerMovement.OnLoop.Invoke();
 
     }

@@ -75,33 +75,39 @@ public class SettingsMenu : MonoBehaviour
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
         settings.resolutionIndex = resolutionIndex;
+        settings.SaveData();
     }
 
     public void SetMasterVolume(float volume)
     {
         audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
         settings.masterVolume = volume;
+        settings.SaveData();
     }
     public void SetMusicVolume(float volume)
     {
         audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
         settings.musicVolume = volume;
+        settings.SaveData();
     }
     public void SetSoundFXVolume(float volume)
     {
         audioMixer.SetFloat("SoundFXVolume", Mathf.Log10(volume) * 20);
         settings.soundFXVolume = volume;
+        settings.SaveData();
     }
 
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
         settings.quality = qualityIndex;
+        settings.SaveData();
     }
 
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
         settings.fullScreen = isFullscreen;
+        settings.SaveData();
     }
 }

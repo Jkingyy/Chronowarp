@@ -15,6 +15,8 @@ public class PlayerStats : ScriptableObject
     public int totalCompletedLevel;
     
     
+
+    
     public void SetNewLevel(bool value)
     {
         newLevel = value;
